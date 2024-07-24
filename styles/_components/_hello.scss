@@ -1,0 +1,38 @@
+.hello {
+  height: 100vh;
+  @include flex(center, center, 1rem);
+}
+
+.title {
+  font-size: 6rem;
+  font-weight: 900;
+  -webkit-text-stroke-width: 6px;
+  -webkit-text-stroke-color: $col-grey;
+  font-family: $font-mori;
+  color: $col-grey;
+}
+
+.hello__dash {
+  height: 1.4rem;
+  width: 4rem;
+  margin-top: 1rem;
+  background-color: $col-grey;
+}
+
+.button {
+  border-radius: 30px;
+  background: rgba(217, 217, 217, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #f6f6f6;
+  padding: 0.875rem 1.3125rem;
+  border: none;
+  outline: none;
+  font-size: 14px;
+  font-family: $font-mori;
+  cursor: pointer;
+  &:hover {
+    color: #f89623 !important;
+  }
+}
