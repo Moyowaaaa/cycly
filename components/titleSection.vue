@@ -1,26 +1,28 @@
 <template>
-  <div class="title-section">
+  <div class="title-section" ref="titleSectionRef">
     <div class="title-section__container">
       <div class="title-section__container--left-column">
         <h1>CYCLE OF LIFE.</h1>
 
-        <button class="title-section__container--left-column__button">
-          <span style="display: flex; align-items: center; gap: 10px"
-            ><span>Shop</span
-            ><svg
-              width="9"
-              height="6"
-              viewBox="0 0 9 6"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                d="M9 3L4 0.113249L4 5.88675L9 3ZM-4.37114e-08 3.5L4.5 3.5L4.5 2.5L4.37114e-08 2.5L-4.37114e-08 3.5Z"
-                fill="#ffffff"
-              />
-            </svg>
-          </span>
-        </button>
+        <div id="button-container" ref="buttonContainerRef">
+          <button class="title-section__container--left-column__button">
+            <span style="display: flex; align-items: center; gap: 10px"
+              ><span>Shop</span
+              ><svg
+                width="9"
+                height="6"
+                viewBox="0 0 9 6"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M9 3L4 0.113249L4 5.88675L9 3ZM-4.37114e-08 3.5L4.5 3.5L4.5 2.5L4.37114e-08 2.5L-4.37114e-08 3.5Z"
+                  fill="#ffffff"
+                />
+              </svg>
+            </span>
+          </button>
+        </div>
       </div>
 
       <div class="title-section__container--right-column">
@@ -30,7 +32,92 @@
   </div>
 </template>
 
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import gsap from "gsap";
+const titleSectionRef = ref<HTMLDivElement | null>(null);
+const buttonContainerRef = ref<HTMLDivElement | null>(null);
+const tl: any = inject("timeline");
+
+onMounted(() => {
+  if (titleSectionRef.value && buttonContainerRef.value) {
+    console.log(titleSectionRef.value.children[0].children[0].children[0]);
+    gsap.set(
+      [
+        titleSectionRef.value.children[0].children[0].children[0],
+        titleSectionRef.value.children[0].children[1].children,
+      ],
+      {
+        opacity: 1.1,
+        y: 100,
+        scale: 1,
+      }
+    );
+
+    gsap.set(buttonContainerRef.value.children[0], {
+      opacity: 0,
+      y: 5,
+    });
+    tl.to(
+      [
+        titleSectionRef.value.children[0].children[0].children[0],
+        buttonContainerRef.value.children[0],
+        titleSectionRef.value.children[0].children[1].children,
+      ],
+      {
+        opacity: 1,
+        y: 0,
+        scale: 1,
+        // stagger: 0.2,
+        duration: 1.2,
+        delay: 1,
+        ease: "power3.inOut",
+      },
+      "-=1"
+    );
+
+    gsap.to(titleSectionRef.value.children[0].children[0].children[0], {
+      scale: 0.8,
+      duration: 1.2,
+      delay: 2,
+      ease: "power3.inOut",
+      scrollTrigger: {
+        trigger: titleSectionRef.value.children[0].children[0].children,
+        scrub: 1.5,
+
+        start: "99% 100%",
+        // end: "  top 70%",
+      },
+    });
+
+    gsap.to(buttonContainerRef.value.children[0], {
+      y: -100,
+      duration: 1.2,
+      delay: 2,
+      ease: "power3.inOut",
+      scrollTrigger: {
+        trigger: buttonContainerRef.value.children[0],
+        scrub: 1.5,
+
+        start: "95% 100%",
+        // end: "  top 70%",
+      },
+    });
+
+    gsap.to(titleSectionRef.value.children[0].children[1].children, {
+      scale: 0.8,
+      duration: 1.2,
+      delay: 2,
+      ease: "power3.inOut",
+      scrollTrigger: {
+        trigger: titleSectionRef.value.children[0].children[1].children,
+        scrub: 1.5,
+        start: "98% 100%",
+        // end: "  top 70%",
+      },
+    });
+  }
+});
+</script>
 
 <style scoped lang="scss">
 .title-section {
@@ -71,6 +158,8 @@
         max-width: 35rem;
         line-height: 5rem;
         color: #d9d9d9;
+        opacity: 0;
+        scale: 1;
       }
 
       button {
@@ -88,6 +177,7 @@
         display: inline-block;
         position: relative;
         font-family: sans-medium;
+        opacity: 0;
 
         &::before,
         &::after {
@@ -106,15 +196,27 @@
       flex-direction: column;
       justify-content: flex-end;
       align-items: end;
-      padding-bottom: 4rem;
+      height: max-content;
+      overflow-y: hidden;
+      align-self: flex-end;
+      margin-bottom: 3rem;
 
       p {
         max-width: 30rem;
         font-size: 1.875rem;
         line-height: 1.875rem;
+        scale: 1;
+        opacity: 0;
       }
     }
   }
+}
+
+#button-container {
+  max-height: max-content;
+  overflow: hidden;
+  width: max-content;
+  padding-top: 1rem;
 }
 
 .title-section__container--left-column__button {

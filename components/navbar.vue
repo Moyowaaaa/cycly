@@ -1,6 +1,6 @@
 <template>
   <div class="navbar">
-    <div class="navbar__container">
+    <div class="navbar__container" ref="navbarRef">
       <div class="navbar__container--logo-container">
         <img src="../assets/images/logo.png" alt="logo" />
       </div>
@@ -61,7 +61,45 @@
   </div>
 </template>
 
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import gsap from "gsap";
+
+const tl: any = inject("timeline");
+
+console.log(tl);
+const navbarRef = ref<HTMLDivElement | null>(null);
+
+onMounted(() => {
+  if (navbarRef.value) {
+    gsap.set(
+      [
+        navbarRef.value.children[0].children,
+        navbarRef.value.children[1].children,
+      ],
+      {
+        opacity: 0,
+        y: 100,
+      }
+    );
+
+    tl.to(
+      [
+        navbarRef.value.children[0].children,
+        navbarRef.value.children[1].children,
+      ],
+      {
+        opacity: 1,
+        y: 0,
+        stagger: 0.2,
+        duration: 1.2,
+        delay: 1,
+        ease: "power3.inOut",
+      },
+      "-=1"
+    );
+  }
+});
+</script>
 
 <style scoped lang="scss">
 .navbar {
@@ -87,8 +125,9 @@
     justify-content: space-between;
 
     &--logo-container {
-      height: 2rem;
-      width: 5rem;
+      max-height: 5rem;
+      max-width: 5rem;
+      overflow: hidden;
 
       img {
         height: 100%;
@@ -101,6 +140,8 @@
       display: flex;
       gap: 1rem;
       align-items: center;
+      height: max-content;
+      overflow: hidden;
 
       &__additional-links {
         font-family: "dm-mono";
