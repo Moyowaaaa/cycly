@@ -21,30 +21,26 @@
 <script setup lang="ts">
 import { ref } from "vue";
 import type { collectionType } from "../types/declarations";
-import mountainBikesImage from "../assets/images/mountainBike.png";
-import cityBikeImage from "../assets/images/cityBike.png";
-import roadBikeImage from "../assets/images/roadBike.png";
-import electricBikeImage from "../assets/images/electricBike.png";
 
 const collections = ref<collectionType[]>([
   {
     title: "City Bikes",
-    image: cityBikeImage,
+    image: "cityBike",
     backgroundColor: "#9747FF",
   },
   {
     title: "Mountain Bikes",
-    image: mountainBikesImage,
+    image: "mountainBike",
     backgroundColor: "#F57804",
   },
   {
     title: "Road Bikes",
-    image: roadBikeImage,
+    image: "roadBike",
     backgroundColor: "#6BF3F3",
   },
   {
     title: "Electric Bikes",
-    image: electricBikeImage,
+    image: "electricBike",
     backgroundColor: "#FFC0CB",
   },
 ]);

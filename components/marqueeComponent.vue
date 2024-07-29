@@ -9,84 +9,84 @@
         v-for="(showcaseImage, index) in showcaseImages"
         :key="index"
       >
-        <img :src="showcaseImage" alt="" />
+        <nuxt-img :src="showcaseImage" alt="" />
       </div>
       <div
         class="secondSection__container--card"
         v-for="(showcaseImage, index) in showcaseImages"
         :key="index"
       >
-        <img :src="showcaseImage" alt="" />
+        <nuxt-img :src="showcaseImage" alt="" />
       </div>
       <div
         class="secondSection__container--card"
         v-for="(showcaseImage, index) in showcaseImages"
         :key="index"
       >
-        <img :src="showcaseImage" alt="" />
+        <nuxt-img :src="showcaseImage" alt="" />
       </div>
       <div
         class="secondSection__container--card"
         v-for="(showcaseImage, index) in showcaseImages"
         :key="index"
       >
-        <img :src="showcaseImage" alt="" />
+        <nuxt-img :src="showcaseImage" alt="" />
       </div>
       <div
         class="secondSection__container--card"
         v-for="(showcaseImage, index) in showcaseImages"
         :key="index"
       >
-        <img :src="showcaseImage" alt="" />
+        <nuxt-img :src="showcaseImage" alt="" />
       </div>
       <div
         class="secondSection__container--card"
         v-for="(showcaseImage, index) in showcaseImages"
         :key="index"
       >
-        <img :src="showcaseImage" alt="" />
+        <nuxt-img :src="showcaseImage" alt="" />
       </div>
       <div
         class="secondSection__container--card"
         v-for="(showcaseImage, index) in showcaseImages"
         :key="index"
       >
-        <img :src="showcaseImage" alt="" />
+        <nuxt-img :src="showcaseImage" alt="" />
       </div>
       <div
         class="secondSection__container--card"
         v-for="(showcaseImage, index) in showcaseImages"
         :key="index"
       >
-        <img :src="showcaseImage" alt="" />
+        <nuxt-img :src="showcaseImage" alt="" />
       </div>
       <div
         class="secondSection__container--card"
         v-for="(showcaseImage, index) in showcaseImages"
         :key="index"
       >
-        <img :src="showcaseImage" alt="" />
+        <nuxt-img :src="showcaseImage" alt="" />
       </div>
       <div
         class="secondSection__container--card"
         v-for="(showcaseImage, index) in showcaseImages"
         :key="index"
       >
-        <img :src="showcaseImage" alt="" />
+        <nuxt-img :src="showcaseImage" alt="" />
       </div>
       <div
         class="secondSection__container--card"
         v-for="(showcaseImage, index) in showcaseImages"
         :key="index"
       >
-        <img :src="showcaseImage" alt="" />
+        <nuxt-img :src="showcaseImage" alt="" />
       </div>
       <div
         class="secondSection__container--card"
         v-for="(showcaseImage, index) in showcaseImages"
         :key="index"
       >
-        <img :src="showcaseImage" alt="" />
+        <nuxt-img :src="showcaseImage" alt="" />
       </div>
     </div>
     <div class="secondSection__button-container">
@@ -115,28 +115,23 @@
 import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
 gsap.registerPlugin(ScrollTrigger);
-import showcaseImage1 from "../assets/images/showcaseImage1.png";
-import showcaseImage2 from "../assets/images/showcaseImage2.png";
-import showcaseImage3 from "../assets/images/showcaseImage3.png";
-import showcaseImage4 from "../assets/images/showcaseImage4.png";
-import showcaseImage5 from "../assets/images/showcaseImage5.png";
 
 const showcaseImages = [
-  showcaseImage1,
-  showcaseImage2,
-  showcaseImage3,
-  showcaseImage4,
-  showcaseImage5,
-  showcaseImage1,
-  showcaseImage2,
-  showcaseImage3,
-  showcaseImage4,
-  showcaseImage5,
-  showcaseImage1,
-  showcaseImage2,
-  showcaseImage3,
-  showcaseImage4,
-  showcaseImage5,
+  "showcaseImage1",
+  "showcaseImage2",
+  "showcaseImage3",
+  "showcaseImage4",
+  "showcaseImage5",
+  "showcaseImage1",
+  "showcaseImage2",
+  "showcaseImage3",
+  "showcaseImage4",
+  "showcaseImage5",
+  "showcaseImage1",
+  "showcaseImage2",
+  "showcaseImage3",
+  "showcaseImage4",
+  "showcaseImage5",
 ];
 
 onMounted(() => {

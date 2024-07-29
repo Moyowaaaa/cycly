@@ -7,11 +7,7 @@
       <h1 class="text4">OF THE GREAT OUTDOORS</h1>
 
       <div class="topSection__image-container" id="image-container">
-        <img
-          src="../assets/images/marqueeImage.png"
-          alt=""
-          id="image-container-image"
-        />
+        <nuxt-img src="marqueeImage.png" alt="" id="image-container-image" />
       </div>
     </div>
 

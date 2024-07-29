@@ -7,7 +7,8 @@
     <div class="collectionCard__container">
       <h2>{{ title }}</h2>
     </div>
-    <img :src="image" :alt="`${title} Image`" />
+    <nuxt-img :src="image" :alt="`${title} Image`" />
+    <p>{{ image }}</p>
   </div>
 </template>
 
@@ -23,7 +24,9 @@ interface CollectionCardProps {
   backgroundColor: string;
 }
 
-defineProps<CollectionCardProps>();
+const props = defineProps<CollectionCardProps>();
+
+console.log(props.image);
 
 const onHoverAnimation = (cardRef: HTMLDivElement) => {
   gsap.to(cardRef.children[0].children, {
