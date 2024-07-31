@@ -2,7 +2,6 @@
   <div class="Page">
     <div class="cartPage__banner">
       <nuxt-img src="cartImage.png" alt="" />
-
       <div class="cartPage__banner--text-container">
         <h1>CART</h1>
       </div>
@@ -16,18 +15,14 @@
           </div>
           <p>Cart</p>
         </div>
-
         <div class="cartPage__main-container--step-count-container__dash"></div>
-
         <div>
           <div class="cartPage__main-container--step-count-container__ball">
             2
           </div>
           <p>Checkout</p>
         </div>
-
         <div class="cartPage__main-container--step-count-container__dash"></div>
-
         <div>
           <div class="cartPage__main-container--step-count-container__ball">
             3
@@ -38,16 +33,20 @@
 
       <div class="cartPage__main-container--content-container">
         <div
-          class="cartPage__main-container--content-container__product-section"
+          class="cartPage__main-container--content-container__contents-container"
         >
-          <CartCard />
-          <CartCard />
-          <CartCard />
-          <CartCard />
+          <div
+            class="cartPage__main-container--content-container__contents-container--product-section"
+            v-for="(cartItem, index) in CartStore.productsInCart"
+            :key="index"
+          >
+            <CartCard :cart-item="cartItem" />
+          </div>
         </div>
 
         <div class="cartPage__main-container--content-container__brief-section">
           <h1>Order Summary</h1>
+
           <div
             class="cartPage__main-container--content-container__brief-section--details-section"
           >
@@ -55,20 +54,23 @@
               class="cartPage__main-container--content-container__brief-section--details-section__detail"
             >
               <p>Sub Total</p>
-              <p>$300.05</p>
+              <p>${{ CartStore.totalAmountOfItemInCart }}</p>
             </div>
+
             <div
               class="cartPage__main-container--content-container__brief-section--details-section__detail"
             >
               <p>Discount</p>
               <p>$0</p>
             </div>
+
             <div
               class="cartPage__main-container--content-container__brief-section--details-section__detail"
             >
               <p>Tax</p>
               <p>$3.0</p>
             </div>
+
             <div
               class="cartPage__main-container--content-container__brief-section--details-section__detail"
             >
@@ -82,23 +84,28 @@
               <p>Total</p>
               <p>$306.05</p>
             </div>
+
+            <button
+              class="cartPage__main-container--content-container__brief-section--button"
+            >
+              <p>Proceed to Checkout</p>
+            </button>
+
+            <hr class="line" />
+            <p class="brief-text">
+              Estimated delivery is within 3 working days
+            </p>
           </div>
-
-          <button
-            class="cartPage__main-container--content-container__brief-section--button"
-          >
-            <p>Proceed to Checkout</p>
-          </button>
-
-          <hr class="line" />
-          <p class="brief-text">Estimated delivery is within 3 working days</p>
         </div>
       </div>
     </div>
   </div>
 </template>
 
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import useCartStore from "@/stores/CartStore";
+const CartStore = useCartStore();
+</script>
 
 <style scoped lang="scss">
 .Page {
@@ -107,6 +114,7 @@
   background-color: white;
   padding-top: 5.5rem;
   color: #101010;
+  box-sizing: border-box;
 }
 
 .cartPage {
@@ -184,15 +192,10 @@
     &--content-container {
       display: flex;
       width: 100%;
+      flex-direction: row;
+      gap: 1rem;
+      padding-top: 2rem;
       justify-content: space-between;
-      padding-top: 4rem;
-
-      &__product-section {
-        display: flex;
-        flex-direction: column;
-        gap: 4rem;
-        width: 50%;
-      }
 
       &__brief-section {
         height: max-content;
@@ -221,6 +224,7 @@
             align-items: center;
             width: 100%;
             justify-content: space-between;
+
             p {
               &:nth-child(1) {
                 font-weight: 400;
@@ -234,7 +238,6 @@
             }
           }
         }
-
         &--button {
           border-radius: 5px;
           margin-top: 1.5rem;
@@ -242,6 +245,23 @@
           color: #ffffff;
           border: none;
           padding: 1rem 0;
+        }
+      }
+
+      &__contents-container {
+        display: flex;
+        flex-direction: column; /* Ensure items stack vertically */
+        width: 50%;
+        justify-content: space-between;
+        padding: 2rem 0;
+        position: relative;
+        box-sizing: border-box;
+
+        &--product-section {
+          display: flex;
+          width: 100%; /* Ensure each product section takes full width */
+          flex-direction: column;
+          gap: 1rem;
         }
       }
     }

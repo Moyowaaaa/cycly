@@ -1,38 +1,48 @@
 <template>
   <div class="cartCard">
     <div class="cartCard__product-section">
-      <nuxt-img src="cityBike.png" alt="" />
+      <nuxt-img :src="cartItem.imageName" alt="" />
       <div class="cartCard__product-section--details-section">
         <div class="cartCard__product-section--details-section__name-section">
-          <h1>BMX Bike</h1>
-          <p>City Bikes</p>
+          <h1>{{ cartItem.name }}</h1>
+          <p v-for="(type, index) in cartItem.type" :key="index">{{ type }}</p>
         </div>
 
         <div class="cartCard__product-section--details-section__price-section">
-          <h1>$100</h1>
+          <h1>${{ cartItem.price }}</h1>
           <div
             class="cartCard__product-section--details-section__price-section--quantity-section"
           >
-            <div>+</div>
-            <p>1</p>
-            <div>-</div>
+            <div @click="CartStore.increaseItem(cartItem.slug)">+</div>
+            <p>{{ cartItem.quantity }}</p>
+            <div @click="CartStore.decreaseItem(cartItem.slug)">-</div>
           </div>
         </div>
       </div>
     </div>
-    <div class="cartCard__remove-section">
+    <div
+      class="cartCard__remove-section"
+      @click="CartStore.removeItemFromCart(cartItem.slug)"
+    >
       <nuxt-img src="trashIcon.svg" alt="" />
       <h1>Remove</h1>
     </div>
   </div>
 </template>
 
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import useCartStore from "../stores/CartStore";
+import type { bike } from "../types/declarations";
+
+const CartStore = useCartStore();
+
+const props = defineProps(["cartItem"]);
+console.log(props.cartItem);
+</script>
 
 <style scoped lang="scss">
 .cartCard {
   position: relative;
-  width: 100%;
   display: flex;
   flex-direction: column;
   gap: 2rem;
@@ -46,7 +56,11 @@
 
     img {
       max-width: 14rem;
-      height: 8rem;
+      min-width: 14rem;
+      object-fit: cover;
+      border-radius: 5px;
+      min-height: 8rem;
+      max-height: 8rem;
     }
 
     &--details-section {
@@ -89,6 +103,7 @@
         }
         div {
           font-family: "dm-mono";
+          cursor: pointer;
 
           div {
             padding: 0.5rem;
@@ -114,6 +129,7 @@
   width: 90%;
   font-size: 0.8rem;
   color: #535353;
+  cursor: pointer;
 
   img {
     min-width: 10px;

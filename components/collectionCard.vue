@@ -65,32 +65,6 @@ onMounted(() => {
       onHoverOutAnimation(cardRef.value);
     }
   });
-
-  // const tl = gsap.timeline({
-  //   scrollTrigger: {
-  //     trigger: ".collectionCard",
-  //     start: "top 85%",
-  //     end: "top 40%",
-  //     // pin: [".testSection"],
-  //     markers: true,
-  //     scrub: 3,
-  //     toggleActions: "none pause none none",
-  //   },
-  // });
-  // if (cardRef.value) {
-  //   gsap.set(cardRef.value?.children[1], { y: "50%" });
-  //   // gsap.set(cardRef.value?.children[0], { opacity: 0 });
-  //   tl.to(cardRef.value?.children[1], {
-  //     y: 0,
-  //   }).from(
-  //     cardRef.value?.children[0].children,
-  //     {
-  //       yPercent: 200,
-  //       opacity: 0,
-  //     },
-  //     "-=0.5"
-  //   );
-  // }
 });
 </script>
 

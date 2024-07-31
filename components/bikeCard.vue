@@ -67,12 +67,14 @@ import type { bike } from "../types/declarations";
 import useBikeStore from "../stores/BikesStore";
 import useCartStore from "@/stores/CartStore";
 import useWishlistStore from "../stores/WishListStore";
+import gsap from "gsap";
 
 const CartStore = useCartStore();
 const WishlistStore = useWishlistStore();
 const BikeStore = useBikeStore();
 let productStatus = ref<boolean | null>(true);
 let inList = ref<boolean | null>(null);
+const cardRef = ref<HTMLDivElement | null>(null);
 
 interface bikeDetails {
   bicycle: bike;
@@ -117,6 +119,37 @@ const toggleWishList = () => {
   }
 };
 
+// const onHoverAnimation = (cardRef: HTMLDivElement) => {
+//   gsap.to(cardRef.children[0], {
+//     scale: 2,
+//     ease: "power3.inOut",
+//     duration: 0.5,
+//   });
+// };
+
+// const onHoverOutAnimation = (cardRef: HTMLDivElement) => {
+//   console.log(cardRef.children);
+
+//   gsap.to(cardRef.children[0], {
+//     scale: 1,
+//     ease: "power3.inOut",
+//     duration: 0.5,
+//   });
+// };
+
+// onMounted(() => {
+//   cardRef.value?.addEventListener("mouseover", () => {
+//     if (cardRef.value) {
+//       onHoverAnimation(cardRef.value);
+//     }
+//   });
+//   cardRef.value?.addEventListener("mouseout", () => {
+//     if (cardRef.value) {
+//       onHoverOutAnimation(cardRef.value);
+//     }
+//   });
+// });
+
 console.log(stars.value);
 </script>
 
@@ -136,6 +169,7 @@ console.log(stars.value);
     width: 100%;
     height: 20rem;
     max-height: 20rem;
+    overflow: hidden;
 
     img {
       width: 100%;
@@ -173,6 +207,7 @@ console.log(stars.value);
       svg {
         height: 20px;
         width: 20px;
+        cursor: pointer;
       }
     }
 
