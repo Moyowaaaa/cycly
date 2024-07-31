@@ -8,7 +8,6 @@
       <h2>{{ title }}</h2>
     </div>
     <nuxt-img :src="image" :alt="`${title} Image`" />
-    <p>{{ image }}</p>
   </div>
 </template>
 

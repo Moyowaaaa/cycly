@@ -14,25 +14,27 @@
         </div>
 
         <div class="footer__container--content-container__links-container">
-          <button
-            class="footer__container--content-container__links-container--button"
-          >
-            <span style="display: flex; align-items: center; gap: 10px"
-              ><span>Shop</span>
-              <svg
-                width="9"
-                height="6"
-                viewBox="0 0 9 6"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  d="M9 3L4 0.113249L4 5.88675L9 3ZM-4.37114e-08 3.5L4.5 3.5L4.5 2.5L4.37114e-08 2.5L-4.37114e-08 3.5Z"
-                  fill="#101010"
-                />
-              </svg>
-            </span>
-          </button>
+          <nuxt-link to="/shop">
+            <button
+              class="footer__container--content-container__links-container--button"
+            >
+              <span style="display: flex; align-items: center; gap: 10px"
+                ><span>Shop</span>
+                <svg
+                  width="9"
+                  height="6"
+                  viewBox="0 0 9 6"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M9 3L4 0.113249L4 5.88675L9 3ZM-4.37114e-08 3.5L4.5 3.5L4.5 2.5L4.37114e-08 2.5L-4.37114e-08 3.5Z"
+                    fill="#101010"
+                  />
+                </svg>
+              </span>
+            </button>
+          </nuxt-link>
 
           <div
             class="footer__container--content-container__links-container--links"

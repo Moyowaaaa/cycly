@@ -56,7 +56,9 @@
           class="navbar__container--links-container__additional-links"
           :class="{ navActive: !isHomeRoute }"
         >
-          <p>Shop</p>
+          <NuxtLink to="/shop">
+            <p>Shop</p>
+          </NuxtLink>
           <NuxtLink to="/cart">
             <p>Cart ( 1 )</p>
           </NuxtLink>

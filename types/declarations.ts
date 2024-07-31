@@ -42,3 +42,18 @@ export type collectionType = {
   image?: string;
   backgroundColor: string;
 };
+
+export type bikeTypes =
+  | "Mountain Bike"
+  | "City Bike"
+  | "Road Bike"
+  | "Electric Bike";
+
+export type bike = {
+  name: string;
+  rating?: number;
+  type: bikeTypes[];
+  imageName?: string;
+  price: string;
+  slug?: string;
+};
