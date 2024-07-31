@@ -114,5 +114,9 @@
   width: 90%;
   font-size: 0.8rem;
   color: #535353;
+
+  img {
+    min-width: 10px;
+  }
 }
 </style>

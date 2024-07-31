@@ -2,6 +2,7 @@
   <div class="defaultLayout">
     <Navbar />
     <div class="defaultLayout__container">
+      <Toast />
       <slot />
     </div>
     <Footer />

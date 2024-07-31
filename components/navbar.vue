@@ -60,7 +60,12 @@
             <p>Shop</p>
           </NuxtLink>
           <NuxtLink to="/cart">
-            <p>Cart ( 1 )</p>
+            <p>
+              Cart
+              <span v-if="CartStore.itemCount > 0"
+                >( {{ CartStore.itemCount }} )</span
+              >
+            </p>
           </NuxtLink>
         </div>
       </div>
@@ -70,8 +75,11 @@
 
 <script setup lang="ts">
 import gsap from "gsap";
+import useCartStore from "@/stores/CartStore";
+
 const route = useRoute();
 const router = useRouter();
+const CartStore = useCartStore();
 const tl: any = inject("timeline");
 const isHomeRoute = ref(false);
 
@@ -159,6 +167,7 @@ const onGoHome = () => {
         height: 100%;
         width: 100%;
         object-fit: cover;
+        opacity: 0;
       }
     }
 
@@ -169,12 +178,17 @@ const onGoHome = () => {
       height: max-content;
       overflow: hidden;
 
+      svg {
+        opacity: 0;
+      }
+
       &__additional-links {
         font-family: "dm-mono";
         padding-left: 2rem;
         align-items: center;
         display: flex;
         gap: 1rem;
+        opacity: 0;
       }
     }
   }
