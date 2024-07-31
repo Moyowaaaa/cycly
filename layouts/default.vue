@@ -2,11 +2,19 @@
   <div class="defaultLayout">
     <Navbar />
     <div class="defaultLayout__container">
+      <Toast />
       <slot />
     </div>
     <Footer />
   </div>
 </template>
+
+<script setup lang="ts">
+import gsap from "gsap";
+
+const timeline = gsap.timeline();
+provide("timeline", timeline);
+</script>
 
 <style scoped lang="scss">
 .defaultLayout {

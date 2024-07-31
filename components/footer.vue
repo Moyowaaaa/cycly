@@ -2,8 +2,11 @@
   <div class="footer">
     <div class="footer__container">
       <div class="footer__container--content-container">
-        <div class="footer__container--content-container__logo-container">
-          <img src="../assets/images/whiteLogo.png" alt="logo" />
+        <div
+          class="footer__container--content-container__logo-container"
+          @click="onGoHome"
+        >
+          <nuxt-img src="whiteLogo.png" alt="logo" />
         </div>
 
         <div class="footer__container--content-container__text-container">
@@ -11,14 +14,27 @@
         </div>
 
         <div class="footer__container--content-container__links-container">
-          <button
-            class="footer__container--content-container__links-container--button"
-          >
-            <span style="display: flex; align-items: center; gap: 10px"
-              ><span>Shop</span>
-              <img src="../assets/images/rightArrow.svg" alt="" />
-            </span>
-          </button>
+          <nuxt-link to="/shop">
+            <button
+              class="footer__container--content-container__links-container--button"
+            >
+              <span style="display: flex; align-items: center; gap: 10px"
+                ><span>Shop</span>
+                <svg
+                  width="9"
+                  height="6"
+                  viewBox="0 0 9 6"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M9 3L4 0.113249L4 5.88675L9 3ZM-4.37114e-08 3.5L4.5 3.5L4.5 2.5L4.37114e-08 2.5L-4.37114e-08 3.5Z"
+                    fill="#101010"
+                  />
+                </svg>
+              </span>
+            </button>
+          </nuxt-link>
 
           <div
             class="footer__container--content-container__links-container--links"
@@ -32,13 +48,10 @@
         <div class="footer__container--content-container__heroText">
           <h1 class="flicker">CYCLE OF LIFE.</h1>
         </div>
-        <!-- <div class="footer__container--content-container__imageContainer">
-          <img src="../assets/images/cityBike.png" alt="" />
-        </div> -->
       </div>
       <div class="footer__container--image-container">
         <div class="footer__container--image-container__image-content">
-          <img src="../assets/images/cityBike.png" alt="" />
+          <nuxt-img src="cityBike.png" alt="" />
         </div>
         <div class="footer__container--bottom-section">
           <p>Israel x Moyowa</p>
@@ -54,18 +67,28 @@
 </template>
 
 <script setup lang="ts">
+import { ref, onMounted } from "vue";
+import { useRouter } from "vue-router";
+
 let year = ref<any>();
+const router = useRouter();
 
 onMounted(() => {
   const date = new Date();
   year.value = date.getFullYear();
 });
-</script>
 
+const onGoHome = () => {
+  router.push("/");
+  document?.querySelector(".homePage")?.scrollIntoView({
+    behavior: "smooth",
+  });
+};
+</script>
 <style scoped lang="scss">
 .footer {
   position: relative;
-  height: 100vh;
+  min-height: 100vh;
   clip-path: polygon(0% 0, 100% 0%, 100% 100%, 0 100%);
   width: 100%;
   background: linear-gradient(0deg, #151515 0%, #202020 50%, #151515 100%);
@@ -89,6 +112,8 @@ onMounted(() => {
       &__logo-container {
         height: 2rem;
         width: 5rem;
+        z-index: 100;
+        cursor: pointer;
         img {
           height: 100%;
           width: 100%;

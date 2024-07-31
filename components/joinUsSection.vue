@@ -8,13 +8,25 @@
         you money and reduce your carbon footprint. Choose your model and join
         the revolution today!
       </div>
-
-      <button class="joinUsSection__container--button">
-        <span style="display: flex; align-items: center; gap: 10px"
-          ><span>Shop</span>
-          <img src="../assets/images/rightArrow.svg" alt="" />
-        </span>
-      </button>
+      <nuxt-link to="/shop">
+        <button class="joinUsSection__container--button">
+          <span style="display: flex; align-items: center; gap: 10px"
+            ><span>Shop</span>
+            <svg
+              width="9"
+              height="6"
+              viewBox="0 0 9 6"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M9 3L4 0.113249L4 5.88675L9 3ZM-4.37114e-08 3.5L4.5 3.5L4.5 2.5L4.37114e-08 2.5L-4.37114e-08 3.5Z"
+                fill="#101010"
+              />
+            </svg>
+          </span>
+        </button>
+      </nuxt-link>
     </div>
   </div>
 </template>
@@ -27,7 +39,7 @@
   min-height: 70vh;
   max-height: 70vh;
   height: 70vh;
-  background-image: url("../assets/images/joinUsBackground.png");
+  background-image: url("https://res.cloudinary.com/dyap7epew/image/upload/v1722255246/cycly/joinUsBackground.png");
   background-size: cover;
   background-repeat: no-repeat;
   background-attachment: fixed;

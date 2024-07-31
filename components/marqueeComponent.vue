@@ -9,104 +9,106 @@
         v-for="(showcaseImage, index) in showcaseImages"
         :key="index"
       >
-        <img :src="showcaseImage" alt="" />
+        <nuxt-img :src="showcaseImage" alt="" />
       </div>
       <div
         class="secondSection__container--card"
         v-for="(showcaseImage, index) in showcaseImages"
         :key="index"
       >
-        <img :src="showcaseImage" alt="" />
+        <nuxt-img :src="showcaseImage" alt="" />
       </div>
       <div
         class="secondSection__container--card"
         v-for="(showcaseImage, index) in showcaseImages"
         :key="index"
       >
-        <img :src="showcaseImage" alt="" />
+        <nuxt-img :src="showcaseImage" alt="" />
       </div>
       <div
         class="secondSection__container--card"
         v-for="(showcaseImage, index) in showcaseImages"
         :key="index"
       >
-        <img :src="showcaseImage" alt="" />
+        <nuxt-img :src="showcaseImage" alt="" />
       </div>
       <div
         class="secondSection__container--card"
         v-for="(showcaseImage, index) in showcaseImages"
         :key="index"
       >
-        <img :src="showcaseImage" alt="" />
+        <nuxt-img :src="showcaseImage" alt="" />
       </div>
       <div
         class="secondSection__container--card"
         v-for="(showcaseImage, index) in showcaseImages"
         :key="index"
       >
-        <img :src="showcaseImage" alt="" />
+        <nuxt-img :src="showcaseImage" alt="" />
       </div>
       <div
         class="secondSection__container--card"
         v-for="(showcaseImage, index) in showcaseImages"
         :key="index"
       >
-        <img :src="showcaseImage" alt="" />
+        <nuxt-img :src="showcaseImage" alt="" />
       </div>
       <div
         class="secondSection__container--card"
         v-for="(showcaseImage, index) in showcaseImages"
         :key="index"
       >
-        <img :src="showcaseImage" alt="" />
+        <nuxt-img :src="showcaseImage" alt="" />
       </div>
       <div
         class="secondSection__container--card"
         v-for="(showcaseImage, index) in showcaseImages"
         :key="index"
       >
-        <img :src="showcaseImage" alt="" />
+        <nuxt-img :src="showcaseImage" alt="" />
       </div>
       <div
         class="secondSection__container--card"
         v-for="(showcaseImage, index) in showcaseImages"
         :key="index"
       >
-        <img :src="showcaseImage" alt="" />
+        <nuxt-img :src="showcaseImage" alt="" />
       </div>
       <div
         class="secondSection__container--card"
         v-for="(showcaseImage, index) in showcaseImages"
         :key="index"
       >
-        <img :src="showcaseImage" alt="" />
+        <nuxt-img :src="showcaseImage" alt="" />
       </div>
       <div
         class="secondSection__container--card"
         v-for="(showcaseImage, index) in showcaseImages"
         :key="index"
       >
-        <img :src="showcaseImage" alt="" />
+        <nuxt-img :src="showcaseImage" alt="" />
       </div>
     </div>
     <div class="secondSection__button-container">
-      <button class="secondSection__button-container__button">
-        <span style="display: flex; align-items: center; gap: 10px"
-          ><span>Shop</span
-          ><svg
-            width="9"
-            height="6"
-            viewBox="0 0 9 6"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              d="M9 3L4 0.113249L4 5.88675L9 3ZM-4.37114e-08 3.5L4.5 3.5L4.5 2.5L4.37114e-08 2.5L-4.37114e-08 3.5Z"
-              fill="#ffffff"
-            />
-          </svg>
-        </span>
-      </button>
+      <nuxt-link to="/shop">
+        <button class="secondSection__button-container__button">
+          <span style="display: flex; align-items: center; gap: 10px"
+            ><span>Shop</span
+            ><svg
+              width="9"
+              height="6"
+              viewBox="0 0 9 6"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M9 3L4 0.113249L4 5.88675L9 3ZM-4.37114e-08 3.5L4.5 3.5L4.5 2.5L4.37114e-08 2.5L-4.37114e-08 3.5Z"
+                fill="#ffffff"
+              />
+            </svg>
+          </span>
+        </button>
+      </nuxt-link>
     </div>
   </div>
 </template>
@@ -115,28 +117,23 @@
 import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
 gsap.registerPlugin(ScrollTrigger);
-import showcaseImage1 from "../assets/images/showcaseImage1.png";
-import showcaseImage2 from "../assets/images/showcaseImage2.png";
-import showcaseImage3 from "../assets/images/showcaseImage3.png";
-import showcaseImage4 from "../assets/images/showcaseImage4.png";
-import showcaseImage5 from "../assets/images/showcaseImage5.png";
 
 const showcaseImages = [
-  showcaseImage1,
-  showcaseImage2,
-  showcaseImage3,
-  showcaseImage4,
-  showcaseImage5,
-  showcaseImage1,
-  showcaseImage2,
-  showcaseImage3,
-  showcaseImage4,
-  showcaseImage5,
-  showcaseImage1,
-  showcaseImage2,
-  showcaseImage3,
-  showcaseImage4,
-  showcaseImage5,
+  "showcaseImage1",
+  "showcaseImage2",
+  "showcaseImage3",
+  "showcaseImage4",
+  "showcaseImage5",
+  "showcaseImage1",
+  "showcaseImage2",
+  "showcaseImage3",
+  "showcaseImage4",
+  "showcaseImage5",
+  "showcaseImage1",
+  "showcaseImage2",
+  "showcaseImage3",
+  "showcaseImage4",
+  "showcaseImage5",
 ];
 
 onMounted(() => {

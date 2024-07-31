@@ -2,7 +2,7 @@
   <div class="quoteSection">
     <div class="quoteSection__container">
       <div class="quoteSection__container--quotes-container" ref="sectionRef">
-        <img src="../assets/images/quote.svg" alt="" />
+        <nuxt-img src="quote.svg" alt="" />
 
         <div class="quoteSection__container--quotes-container__text-container">
           <p>
@@ -21,7 +21,7 @@
     </div>
 
     <div class="quoteSection__image-container">
-      <img src="../assets/images/quoteBike.png" alt="" />
+      <nuxt-img src="quoteBike.png" alt="" />
     </div>
   </div>
 </template>
@@ -117,7 +117,7 @@ onMounted(() => {
       margin-bottom: 2rem;
 
       img {
-        height: 9rem;
+        height: 4.5rem;
         width: 5rem;
       }
 
