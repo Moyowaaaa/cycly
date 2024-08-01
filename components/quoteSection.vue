@@ -95,6 +95,7 @@ onMounted(() => {
   background-color: #ffffff;
   position: relative;
   background-color: #151515;
+  color: #dddddd !important;
 
   &__container {
     width: 100%;
@@ -115,6 +116,7 @@ onMounted(() => {
       flex-direction: column;
       gap: 2rem;
       margin-bottom: 2rem;
+      opacity: 1;
 
       img {
         height: 4.5rem;

@@ -7,7 +7,9 @@
       </div>
     </div>
 
-    <div class="cartPage__main-container">
+    <CartEmptyState v-if="CartStore.productsInCart.length === 0" />
+
+    <div class="cartPage__main-container" v-else>
       <div class="cartPage__main-container--step-count-container">
         <div>
           <div class="cartPage__main-container--step-count-container__ball">
@@ -110,7 +112,7 @@ const CartStore = useCartStore();
 <style scoped lang="scss">
 .Page {
   position: relative;
-  min-height: 100rem;
+
   background-color: white;
   padding-top: 5.5rem;
   color: #101010;
@@ -151,6 +153,7 @@ const CartStore = useCartStore();
     max-width: 112rem;
     margin: 0 auto;
     padding: 4rem 4rem;
+    min-height: 50rem;
     display: flex;
     flex-direction: column;
     gap: 2rem;

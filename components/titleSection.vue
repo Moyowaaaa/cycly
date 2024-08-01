@@ -42,19 +42,21 @@ const tl: any = inject("timeline");
 
 onMounted(() => {
   if (titleSectionRef.value && buttonContainerRef.value) {
-    console.log(titleSectionRef.value.children[0].children[0].children[0]);
     gsap.set([titleSectionRef.value.children[0].children[0].children[0]], {
       opacity: 1.1,
       y: 100,
     });
 
+    console.log(buttonContainerRef.value.children[0]);
+
     gsap.set(buttonContainerRef.value.children[0], {
       opacity: 0,
     });
+
     tl.to(
       [
         titleSectionRef.value.children[0].children[0].children[0],
-        buttonContainerRef.value.children[0],
+        // buttonContainerRef.value.children[0],
         titleSectionRef.value.children[0].children[1].children,
       ],
       {
@@ -68,6 +70,14 @@ onMounted(() => {
       },
       "-=1"
     );
+
+    gsap.to(buttonContainerRef.value.children[0], {
+      opacity: 1,
+      y: 0,
+      scale: 1,
+      delay: 1.2,
+      ease: "power3.inOut",
+    });
 
     gsap.to(titleSectionRef.value.children[0].children[0].children[0], {
       scale: 0.8,
@@ -87,6 +97,7 @@ onMounted(() => {
       y: -100,
       duration: 1.2,
       delay: 2,
+
       ease: "power3.inOut",
       scrollTrigger: {
         trigger: buttonContainerRef.value.children[0],
@@ -124,7 +135,7 @@ onMounted(() => {
   top: 0;
   left: 0;
   right: 0;
-
+  color: white;
   background-image: url("https://res.cloudinary.com/dyap7epew/image/upload/v1722255246/cycly/titleBike.png");
   background-size: cover;
   background-repeat: no-repeat;

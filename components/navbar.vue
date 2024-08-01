@@ -20,6 +20,9 @@
           />
         </svg>
 
+        <p v-if="itemsinWishlist.length > 0">
+          ( {{ itemsinWishlist.length }} )
+        </p>
         <svg
           width="20"
           height="20"
@@ -77,23 +80,30 @@
 <script setup lang="ts">
 import gsap from "gsap";
 import useCartStore from "@/stores/CartStore";
+import useWishlistStore from "../stores/WishListStore";
 
 const route = useRoute();
 const router = useRouter();
 const CartStore = useCartStore();
 const tl: any = inject("timeline");
 const isHomeRoute = ref(false);
+const { wishlist, itemsinWishlist } = storeToRefs(useWishlistStore());
 
 const navbarRef = ref<HTMLDivElement | null>(null);
 
 watchEffect(() => {
   if (route.name === "index") {
     isHomeRoute.value = true;
+    document?.querySelector(".navbar")?.scrollIntoView({
+      behavior: "smooth",
+    });
   } else {
     isHomeRoute.value = false;
+    document?.querySelector(".navbar")?.scrollIntoView({
+      behavior: "smooth",
+    });
   }
 });
-console.log(isHomeRoute.value);
 onMounted(() => {
   if (navbarRef.value) {
     gsap.set(

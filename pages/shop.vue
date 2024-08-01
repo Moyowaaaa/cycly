@@ -15,14 +15,15 @@
         <div class="shopPage__bikes-container--filter-section__filters">
           <p>City Bikes</p>
           <p>Mountain Bikes</p>
-          <p>City Bikes</p>
+          <p>Road Bikes</p>
+          <p>Electric Bikes</p>
         </div>
 
         <hr class="line" />
       </div>
 
       <div class="shopPage__bikes-container--store-section">
-        <BikeCard v-for="(bike, index) in bikes" :bicycle="bike" />
+        <BikeCard v-for="(bike, index) in bikes" :key="index" :bicycle="bike" />
       </div>
     </div>
   </div>
@@ -104,6 +105,7 @@ console.log({ bikes });
         font-weight: 400;
         font-family: "dm-mono";
         padding-bottom: 10rem;
+        cursor: pointer;
       }
     }
     &--store-section {
