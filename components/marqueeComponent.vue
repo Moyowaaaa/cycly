@@ -189,7 +189,7 @@ onMounted(() => {
   position: relative;
   align-items: center;
   background-color: #ffffff;
-  background-image: url("../assets/images/showcaseBackground.png");
+  background-image: url("https://res.cloudinary.com/dyap7epew/image/upload/v1722255252/cycly/showcaseBackground.png");
   background-repeat: no-repeat;
   background-size: 25rem;
   background-position: top center;

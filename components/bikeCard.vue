@@ -1,5 +1,5 @@
 <template>
-  <div class="bikeCard">
+  <div class="bikeCard" ref="cardRef">
     <div class="bikeCard__image-container">
       <nuxt-img :src="bicycle.imageName" :alt="`${bicycle.name} Image`" />
     </div>
@@ -119,36 +119,37 @@ const toggleWishList = () => {
   }
 };
 
-// const onHoverAnimation = (cardRef: HTMLDivElement) => {
-//   gsap.to(cardRef.children[0], {
-//     scale: 2,
-//     ease: "power3.inOut",
-//     duration: 0.5,
-//   });
-// };
+const onHoverAnimation = (cardRef: HTMLDivElement) => {
+  gsap.to(cardRef.children[0].children, {
+    scale: 1.2,
+    cursor: "pointer",
+    ease: "power3.inOut",
+    duration: 0.5,
+  });
+};
 
-// const onHoverOutAnimation = (cardRef: HTMLDivElement) => {
-//   console.log(cardRef.children);
+const onHoverOutAnimation = (cardRef: HTMLDivElement) => {
+  console.log(cardRef.children);
 
-//   gsap.to(cardRef.children[0], {
-//     scale: 1,
-//     ease: "power3.inOut",
-//     duration: 0.5,
-//   });
-// };
+  gsap.to(cardRef.children[0].children, {
+    scale: 1,
+    ease: "power3.inOut",
+    duration: 0.5,
+  });
+};
 
-// onMounted(() => {
-//   cardRef.value?.addEventListener("mouseover", () => {
-//     if (cardRef.value) {
-//       onHoverAnimation(cardRef.value);
-//     }
-//   });
-//   cardRef.value?.addEventListener("mouseout", () => {
-//     if (cardRef.value) {
-//       onHoverOutAnimation(cardRef.value);
-//     }
-//   });
-// });
+onMounted(() => {
+  cardRef.value?.addEventListener("mouseover", () => {
+    if (cardRef.value) {
+      onHoverAnimation(cardRef.value);
+    }
+  });
+  cardRef.value?.addEventListener("mouseout", () => {
+    if (cardRef.value) {
+      onHoverOutAnimation(cardRef.value);
+    }
+  });
+});
 
 console.log(stars.value);
 </script>

@@ -5,10 +5,10 @@ export type collectionType = {
 };
 
 export type bikeTypes =
-  | "Mountain Bike"
-  | "City Bike"
-  | "Road Bike"
-  | "Electric Bike";
+  | "Mountain Bikes"
+  | "City Bikes"
+  | "Road Bikes"
+  | "Electric Bikes";
 
 export type bike = {
   name: string;

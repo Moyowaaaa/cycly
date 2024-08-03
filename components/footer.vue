@@ -93,6 +93,7 @@ const onGoHome = () => {
   width: 100%;
   background: linear-gradient(0deg, #151515 0%, #202020 50%, #151515 100%);
   z-index: 109;
+  color: #fdfdfd;
 
   &__container {
     position: fixed;

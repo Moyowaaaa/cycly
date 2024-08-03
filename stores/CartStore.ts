@@ -47,7 +47,7 @@ const useCartStore = defineStore("cart", {
       const ItemId = this.cart.find((product: Item) => product.slug === slug);
       if (ItemId) {
         ItemId.quantity++;
-        toastStore.increasedItem();
+        toastStore.addedItem();
       } else {
         this.cart.push({ slug, quantity });
         toastStore.addedItem();
@@ -58,7 +58,7 @@ const useCartStore = defineStore("cart", {
       const ItemId = this.cart.find((item) => item.slug === slug);
       if (ItemId) {
         ItemId.quantity++;
-        toastStore.increasedItem();
+        toastStore.addedItem;
       }
     },
     decreaseItem(slug: string) {
@@ -66,7 +66,7 @@ const useCartStore = defineStore("cart", {
       const ItemId = this.cart.find((item) => item.slug === slug);
       if (ItemId) {
         ItemId.quantity--;
-        toastStore.decreasedItem();
+        toastStore.removedItem();
         if (ItemId.quantity <= 0) {
           this.removeItemFromCart(slug);
           toastStore.removedItem();

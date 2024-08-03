@@ -2,8 +2,34 @@ import usePreloadImagesStore from "~/stores/ImagesPreloader";
 
 export function loadAssets(): Promise<void[]> {
   const preloadImagesStore = usePreloadImagesStore();
+  const prefixUrl =
+    "https://res.cloudinary.com/dyap7epew/image/upload/v1722255252/cycly/";
 
-  const images: any[] = [];
+  const images: any[] = [
+    `${prefixUrl}titleBike.png`,
+    `${prefixUrl}cityBike`,
+    `${prefixUrl}mountainBike`,
+    `${prefixUrl}roadBike`,
+    `${prefixUrl}electricBike`,
+    `${prefixUrl}showcaseBackground.png`,
+    `${prefixUrl}joinUsBackground.png`,
+    `${prefixUrl}marqueeImage.png`,
+    `${prefixUrl}quoteBike.png`,
+    `${prefixUrl}eBike1`,
+    `${prefixUrl}mountainBike1`,
+    `${prefixUrl}mountainBike3`,
+    `${prefixUrl}roadBike1`,
+    `${prefixUrl}roadBike2`,
+    `${prefixUrl}mountainBike5`,
+    `${prefixUrl}cityBike3`,
+    `${prefixUrl}cityBike1`,
+    `${prefixUrl}cityBike2`,
+    `${prefixUrl}cityBike4`,
+    `${prefixUrl}roadBike3`,
+    `${prefixUrl}eBike3`,
+    `${prefixUrl}cityBike5`,
+    `${prefixUrl}eBike2`,
+  ];
 
   preloadImagesStore.numberOfImagesToLoad = images.length;
 
