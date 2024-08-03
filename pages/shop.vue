@@ -1,10 +1,16 @@
 <template>
   <div class="Page">
     <div class="shopPage__banner">
-      <!-- <nuxt-img src="cartImage.png" alt="" /> -->
       <img src="../assets/storeBannerImage.png" alt="" />
 
       <div class="shopPage__banner--text-container">
+        <!-- <h1
+          v-for="(type, index) in selectedBikeTypes"
+          :key="index"
+          v-if="selectedBikeTypes.length > 0"
+        >
+          {{ type }}&nbsp;
+        </h1> -->
         <h1>Bikes</h1>
       </div>
     </div>
@@ -13,27 +19,63 @@
         <h1>Collection</h1>
 
         <div class="shopPage__bikes-container--filter-section__filters">
-          <p>City Bikes</p>
-          <p>Mountain Bikes</p>
-          <p>Road Bikes</p>
-          <p>Electric Bikes</p>
+          <p
+            v-for="(type, index) in types"
+            :key="index"
+            @click="onSelectType(type)"
+            :class="{ active: selectedBikeTypes.includes(type) }"
+          >
+            {{ type }}
+          </p>
         </div>
 
         <hr class="line" />
       </div>
 
       <div class="shopPage__bikes-container--store-section">
-        <BikeCard v-for="(bike, index) in bikes" :key="index" :bicycle="bike" />
+        <BikeCard
+          v-for="(bike, index) in filteredBikes"
+          :key="index"
+          :bicycle="bike"
+        />
       </div>
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
+import { ref, computed } from "vue";
+import { storeToRefs } from "pinia";
 import useBikeStore from "../stores/BikesStore";
+import type { bike, bikeTypes } from "../types/declarations";
+
 const BikesStore = useBikeStore();
 const { bikes } = storeToRefs(BikesStore);
-console.log({ bikes });
+const types: bikeTypes[] = [
+  "City Bikes",
+  "Mountain Bikes",
+  "Road Bikes",
+  "Electric Bikes",
+];
+
+const selectedBikeTypes = ref<bikeTypes[]>([]);
+
+const onSelectType = (type: bikeTypes) => {
+  if (selectedBikeTypes.value.includes(type)) {
+    selectedBikeTypes.value = selectedBikeTypes.value.filter((t) => t !== type);
+  } else {
+    selectedBikeTypes.value.push(type);
+  }
+};
+
+const filteredBikes = computed(() => {
+  if (selectedBikeTypes.value.length === 0) {
+    return bikes.value;
+  }
+  return bikes.value.filter((bike) =>
+    bike.type.some((type) => selectedBikeTypes.value.includes(type))
+  );
+});
 </script>
 
 <style scoped lang="scss">
@@ -65,6 +107,7 @@ console.log({ bikes });
       display: flex;
       align-items: center;
       justify-content: center;
+      flex-wrap: wrap;
 
       h1 {
         font-weight: 700;
@@ -106,6 +149,11 @@ console.log({ bikes });
         font-family: "dm-mono";
         padding-bottom: 10rem;
         cursor: pointer;
+        width: max-content;
+
+        .active {
+          font-weight: 700;
+        }
       }
     }
     &--store-section {
