@@ -1,5 +1,5 @@
 <template>
-  <div class="defaultLayout">
+  <div class="defaultLayout" v-if="imagesHaveLoaded">
     <Navbar />
     <div class="defaultLayout__container">
       <Toast />
@@ -10,10 +10,10 @@
 </template>
 
 <script setup lang="ts">
-import gsap from "gsap";
-
-const timeline = gsap.timeline();
-provide("timeline", timeline);
+import { storeToRefs } from "pinia";
+import usePreloadImagesStore from "~/stores/ImagesPreloader";
+const imagesStore = usePreloadImagesStore();
+const { imagesHaveLoaded } = storeToRefs(imagesStore);
 </script>
 
 <style scoped lang="scss">

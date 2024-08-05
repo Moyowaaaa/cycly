@@ -18,7 +18,7 @@ import gsap from "gsap";
 const { percentageOfLoadedImages, imagesHaveLoaded } = storeToRefs(imagesStore);
 
 watchEffect(() => {
-  if (percentageOfLoadedImages.value > 50) {
+  if (percentageOfLoadedImages.value > 0) {
     gsap.to(".preloader__container--top-container__loading-text", {
       y: 0,
       opacity: 1,

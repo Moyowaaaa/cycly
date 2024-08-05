@@ -1,11 +1,13 @@
 <template>
   <div class="cartCard">
     <div class="cartCard__product-section">
-      <nuxt-img :src="cartItem.imageName" alt="" />
+      <nuxt-img :src="cartItem.imageName" alt="" loading="lazy" />
       <div class="cartCard__product-section--details-section">
         <div class="cartCard__product-section--details-section__name-section">
           <h1>{{ cartItem.name }}</h1>
-          <p v-for="(type, index) in cartItem.type" :key="index">{{ type }}</p>
+          <p v-for="(type, index) in cartItem.type" :key="index">
+            {{ removeLastLetter(type) }}
+          </p>
         </div>
 
         <div class="cartCard__product-section--details-section__price-section">
@@ -24,7 +26,7 @@
       class="cartCard__remove-section"
       @click="CartStore.removeItemFromCart(cartItem.slug)"
     >
-      <nuxt-img src="trashIcon.svg" alt="" />
+      <nuxt-img loading="lazy" src="trashIcon.svg" alt="" />
       <h1>Remove</h1>
     </div>
   </div>
@@ -32,12 +34,12 @@
 
 <script setup lang="ts">
 import useCartStore from "../stores/CartStore";
+import { removeLastLetter } from "../utils/index";
 import type { bike } from "../types/declarations";
 
 const CartStore = useCartStore();
 
 const props = defineProps(["cartItem"]);
-console.log(props.cartItem);
 </script>
 
 <style scoped lang="scss">

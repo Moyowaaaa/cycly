@@ -9,84 +9,84 @@
         v-for="(showcaseImage, index) in showcaseImages"
         :key="index"
       >
-        <nuxt-img :src="showcaseImage" alt="" />
+        <nuxt-img loading="lazy" :src="showcaseImage" alt="" />
       </div>
       <div
         class="secondSection__container--card"
         v-for="(showcaseImage, index) in showcaseImages"
         :key="index"
       >
-        <nuxt-img :src="showcaseImage" alt="" />
+        <nuxt-img loading="lazy" :src="showcaseImage" alt="" />
       </div>
       <div
         class="secondSection__container--card"
         v-for="(showcaseImage, index) in showcaseImages"
         :key="index"
       >
-        <nuxt-img :src="showcaseImage" alt="" />
+        <nuxt-img loading="lazy" :src="showcaseImage" alt="" />
       </div>
       <div
         class="secondSection__container--card"
         v-for="(showcaseImage, index) in showcaseImages"
         :key="index"
       >
-        <nuxt-img :src="showcaseImage" alt="" />
+        <nuxt-img loading="lazy" :src="showcaseImage" alt="" />
       </div>
       <div
         class="secondSection__container--card"
         v-for="(showcaseImage, index) in showcaseImages"
         :key="index"
       >
-        <nuxt-img :src="showcaseImage" alt="" />
+        <nuxt-img loading="lazy" :src="showcaseImage" alt="" />
       </div>
       <div
         class="secondSection__container--card"
         v-for="(showcaseImage, index) in showcaseImages"
         :key="index"
       >
-        <nuxt-img :src="showcaseImage" alt="" />
+        <nuxt-img loading="lazy" :src="showcaseImage" alt="" />
       </div>
       <div
         class="secondSection__container--card"
         v-for="(showcaseImage, index) in showcaseImages"
         :key="index"
       >
-        <nuxt-img :src="showcaseImage" alt="" />
+        <nuxt-img loading="lazy" :src="showcaseImage" alt="" />
       </div>
       <div
         class="secondSection__container--card"
         v-for="(showcaseImage, index) in showcaseImages"
         :key="index"
       >
-        <nuxt-img :src="showcaseImage" alt="" />
+        <nuxt-img loading="lazy" :src="showcaseImage" alt="" />
       </div>
       <div
         class="secondSection__container--card"
         v-for="(showcaseImage, index) in showcaseImages"
         :key="index"
       >
-        <nuxt-img :src="showcaseImage" alt="" />
+        <nuxt-img loading="lazy" :src="showcaseImage" alt="" />
       </div>
       <div
         class="secondSection__container--card"
         v-for="(showcaseImage, index) in showcaseImages"
         :key="index"
       >
-        <nuxt-img :src="showcaseImage" alt="" />
+        <nuxt-img loading="lazy" :src="showcaseImage" alt="" />
       </div>
       <div
         class="secondSection__container--card"
         v-for="(showcaseImage, index) in showcaseImages"
         :key="index"
       >
-        <nuxt-img :src="showcaseImage" alt="" />
+        <nuxt-img loading="lazy" :src="showcaseImage" alt="" />
       </div>
       <div
         class="secondSection__container--card"
         v-for="(showcaseImage, index) in showcaseImages"
         :key="index"
       >
-        <nuxt-img :src="showcaseImage" alt="" />
+        <nuxt-img loading="lazy" :src="showcaseImage" alt="" />
       </div>
     </div>
     <div class="secondSection__button-container">

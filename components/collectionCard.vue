@@ -3,17 +3,20 @@
     class="collectionCard"
     :style="{ backgroundColor: backgroundColor }"
     ref="cardRef"
+    @click="redirectWithQuery(title)"
   >
     <div class="collectionCard__container">
       <h2>{{ title }}</h2>
     </div>
-    <nuxt-img :src="image" :alt="`${title} Image`" />
+    <nuxt-img loading="lazy" :src="image" :alt="`${title} Image`" />
   </div>
 </template>
 
 <script setup lang="ts">
 import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
+const router = useRouter();
+
 gsap.registerPlugin(ScrollTrigger);
 
 const cardRef = ref<HTMLDivElement | null>(null);
@@ -23,9 +26,19 @@ interface CollectionCardProps {
   backgroundColor: string;
 }
 
-const props = defineProps<CollectionCardProps>();
+defineProps<CollectionCardProps>();
 
-console.log(props.image);
+const redirectWithQuery = (title: string) => {
+  router.push({
+    name: "shop",
+    query: {
+      type: title,
+    },
+  });
+  document?.querySelector(".Page")?.scrollIntoView({
+    behavior: "smooth",
+  });
+};
 
 const onHoverAnimation = (cardRef: HTMLDivElement) => {
   gsap.to(cardRef.children[0].children, {
@@ -41,7 +54,6 @@ const onHoverAnimation = (cardRef: HTMLDivElement) => {
 };
 
 const onHoverOutAnimation = (cardRef: HTMLDivElement) => {
-  console.log(cardRef.children);
   gsap.to(cardRef.children[0].children, {
     x: 0,
     ease: "power3.inOut",

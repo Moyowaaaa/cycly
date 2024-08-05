@@ -29,6 +29,14 @@ export function loadAssets(): Promise<void[]> {
     `${prefixUrl}eBike3`,
     `${prefixUrl}cityBike5`,
     `${prefixUrl}eBike2`,
+    `${prefixUrl}mountainBike4`,
+    `${prefixUrl}roadBike4`,
+    `${prefixUrl}eBike4`,
+    `${prefixUrl}bikesImage`,
+    `${prefixUrl}roadBikesImage2`,
+    `${prefixUrl}cityBikesImage`,
+    `${prefixUrl}electricBikesImage`,
+    `${prefixUrl}mountainBikesImage`,
   ];
 
   preloadImagesStore.numberOfImagesToLoad = images.length;
@@ -41,6 +49,7 @@ export function loadAssets(): Promise<void[]> {
       image.onload = () => {
         preloadImagesStore.numberOfLoadedImages++;
         if (preloadImagesStore.numberOfLoadedImages === images.length) {
+          console.log("images from: https://unsplash.com");
           preloadImagesStore.imagesHaveLoaded = true;
         }
         resolve();
