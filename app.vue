@@ -1,7 +1,7 @@
 <template>
   <div>
     <!-- Show Preloader if images are not loaded -->
-    <Preloader v-if="!imagesHaveLoaded" />
+    <Preloader />
 
     <!-- Conditionally render the main content -->
     <NuxtLayout v-if="imagesHaveLoaded">
