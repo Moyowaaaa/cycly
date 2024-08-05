@@ -37,13 +37,13 @@ export default defineNuxtConfig({
           hid: "og:image",
           name: "og:image",
           content:
-            "https://res.cloudinary.com/dyap7epew/image/upload/v1722255252/cycly/titleBike.png",
+            "https://res.cloudinary.com/dyap7epew/image/upload/f_auto,q_auto/v1/projects/dvtawwshuetenrqgrvz3",
         },
         {
           hid: "twitter:image",
           name: "twitter:image",
           content:
-            "https://res.cloudinary.com/dyap7epew/image/upload/v1722255252/cycly/titleBike.png",
+            "https://res.cloudinary.com/dyap7epew/image/upload/f_auto,q_auto/v1/projects/dvtawwshuetenrqgrvz3",
         },
         {
           hid: "twitter:card",
@@ -55,7 +55,7 @@ export default defineNuxtConfig({
         {
           rel: "icon",
           type: "image/png",
-          href: "https://res.cloudinary.com/dyap7epew/image/upload/v1722255252/cycly/titleBike.png",
+          href: "https://res.cloudinary.com/dyap7epew/image/upload/f_auto,q_auto/v1/projects/dvtawwshuetenrqgrvz3",
         },
       ],
     },

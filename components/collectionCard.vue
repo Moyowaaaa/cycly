@@ -35,6 +35,9 @@ const redirectWithQuery = (title: string) => {
       type: title,
     },
   });
+  document?.querySelector(".Page")?.scrollIntoView({
+    behavior: "smooth",
+  });
 };
 
 const onHoverAnimation = (cardRef: HTMLDivElement) => {

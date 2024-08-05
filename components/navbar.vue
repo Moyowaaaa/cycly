@@ -20,8 +20,10 @@
           />
         </svg>
 
-        <p v-if="itemsinWishlist.length > 0">
-          ( {{ itemsinWishlist.length }} )
+        <p style="margin-left: -1rem; min-width: 1rem">
+          <span v-if="itemsinWishlist.length > 0">
+            ( {{ itemsinWishlist.length }} )</span
+          >
         </p>
         <svg
           width="20"
@@ -94,12 +96,12 @@ const navbarRef = ref<HTMLDivElement | null>(null);
 watchEffect(() => {
   if (route.name === "index") {
     isHomeRoute.value = true;
-    document?.querySelector(".navbar")?.scrollIntoView({
+    document?.querySelector(".homePage")?.scrollIntoView({
       behavior: "smooth",
     });
   } else {
     isHomeRoute.value = false;
-    document?.querySelector(".navbar")?.scrollIntoView({
+    document?.querySelector(".homePage")?.scrollIntoView({
       behavior: "smooth",
     });
   }

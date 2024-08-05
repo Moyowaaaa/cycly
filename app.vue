@@ -4,7 +4,7 @@
     <Preloader v-if="!imagesHaveLoaded" />
 
     <!-- Conditionally render the main content -->
-    <NuxtLayout v-if="imagesHaveLoaded">
+    <NuxtLayout>
       <NuxtPage />
     </NuxtLayout>
   </div>
@@ -15,6 +15,11 @@ import { onMounted } from "vue";
 import { storeToRefs } from "pinia";
 import { Interactions } from "@/interactions";
 import usePreloadImagesStore from "~/stores/ImagesPreloader";
+
+import gsap from "gsap";
+
+const timeline = gsap.timeline();
+provide("timeline", timeline);
 
 // Initialize store
 const imagesStore = usePreloadImagesStore();
