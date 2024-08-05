@@ -11,20 +11,16 @@
 </template>
 
 <script setup lang="ts">
-import { onMounted } from "vue";
+import { onMounted, watchEffect } from "vue";
 import { storeToRefs } from "pinia";
 import { Interactions } from "@/interactions";
 import usePreloadImagesStore from "~/stores/ImagesPreloader";
 
-import gsap from "gsap";
-
-const timeline = gsap.timeline();
-provide("timeline", timeline);
-
 // Initialize store
 const imagesStore = usePreloadImagesStore();
-const { imagesHaveLoaded } = storeToRefs(imagesStore);
+const { percentageOfLoadedImages, imagesHaveLoaded } = storeToRefs(imagesStore);
 
+// Handle image loading on component mount
 onMounted(() => {
   new Interactions();
   if (!imagesHaveLoaded.value) {
