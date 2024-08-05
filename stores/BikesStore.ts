@@ -87,6 +87,14 @@ const useBikeStore = defineStore("BikeStore", {
           slug: "enduro-chase",
         },
         {
+          name: "SummitSeeker Explorer",
+          imageName: "mountainBike4",
+          price: 180,
+          type: ["Mountain Bikes"],
+          rating: 5,
+          slug: "summit-explorer",
+        },
+        {
           name: "CommuterCycle Eco",
           imageName: "cityBike4",
           price: 200,
@@ -101,6 +109,14 @@ const useBikeStore = defineStore("BikeStore", {
           type: ["Road Bikes"],
           rating: 4,
           slug: "speedster-aero",
+        },
+        {
+          name: "EnduroRide Racer",
+          imageName: "roadBike4",
+          price: 195,
+          type: ["Road Bikes"],
+          rating: 4,
+          slug: "enduro-racer",
         },
         {
           name: " PowerPedal Eco",
@@ -125,6 +141,14 @@ const useBikeStore = defineStore("BikeStore", {
           type: ["Electric Bikes"],
           rating: 5,
           slug: "eglide-boost",
+        },
+        {
+          name: "VoltRide Power",
+          imageName: "eBike4",
+          price: 200,
+          type: ["Electric Bikes"],
+          rating: 4,
+          slug: "voltride-power",
         },
       ] as unknown as bike[],
     };

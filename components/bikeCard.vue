@@ -1,7 +1,11 @@
 <template>
   <div class="bikeCard" ref="cardRef">
     <div class="bikeCard__image-container">
-      <nuxt-img :src="bicycle.imageName" :alt="`${bicycle.name} Image`" />
+      <nuxt-img
+        loading="lazy"
+        :src="bicycle.imageName"
+        :alt="`${bicycle.name} Image`"
+      />
     </div>
     <div class="bikeCard__details-container">
       <div class="bikeCard__details-container--ratings">
@@ -25,6 +29,7 @@
         </svg>
       </div>
       <h1>{{ bicycle.name }}</h1>
+      <p>{{ removeLastLetter(bicycle.type[0]) }}</p>
       <p>${{ bicycle.price }}</p>
 
       <div class="bikeCard__details-container--actions">
@@ -68,6 +73,7 @@ import useBikeStore from "../stores/BikesStore";
 import useCartStore from "@/stores/CartStore";
 import useWishlistStore from "../stores/WishListStore";
 import gsap from "gsap";
+import { removeLastLetter } from "../utils/index";
 
 const CartStore = useCartStore();
 const WishlistStore = useWishlistStore();
@@ -106,7 +112,6 @@ watchEffect(() => {
     );
     inList.value = exists.value;
   }
-  console.log(inList.value);
 });
 
 const toggleWishList = () => {
@@ -129,8 +134,6 @@ const onHoverAnimation = (cardRef: HTMLDivElement) => {
 };
 
 const onHoverOutAnimation = (cardRef: HTMLDivElement) => {
-  console.log(cardRef.children);
-
   gsap.to(cardRef.children[0].children, {
     scale: 1,
     ease: "power3.inOut",
@@ -150,8 +153,6 @@ onMounted(() => {
     }
   });
 });
-
-console.log(stars.value);
 </script>
 
 <style scoped lang="scss">
@@ -160,8 +161,8 @@ console.log(stars.value);
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  min-height: 30rem;
-  max-height: 30rem;
+  min-height: 32rem;
+  max-height: 32rem;
   background-color: #f9f6ff;
   font-family: "dm-mono";
   border-radius: 5px;
@@ -181,7 +182,7 @@ console.log(stars.value);
   }
 
   &__details-container {
-    height: 10rem;
+    height: 12rem;
     width: 100%;
     display: flex;
     flex-direction: column;

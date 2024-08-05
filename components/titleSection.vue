@@ -47,8 +47,6 @@ onMounted(() => {
       y: 100,
     });
 
-    console.log(buttonContainerRef.value.children[0]);
-
     gsap.set(buttonContainerRef.value.children[0], {
       opacity: 0,
     });

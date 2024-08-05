@@ -1,7 +1,7 @@
 <template>
   <div class="wishlistPage">
     <div class="wishlistPage__banner">
-      <nuxt-img src="showcaseImage8.png" alt="" />
+      <nuxt-img loading="lazy" src="showcaseImage8.png" alt="" />
       <div class="wishlistPage__banner--text-container">
         <h1>WISH-LIST</h1>
       </div>
@@ -23,8 +23,6 @@
 import useWishlistStore from "../stores/WishListStore";
 import { storeToRefs } from "pinia";
 const { wishlist, itemsinWishlist } = storeToRefs(useWishlistStore());
-
-console.log({ wishlist });
 </script>
 
 <style scoped lang="scss">

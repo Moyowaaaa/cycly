@@ -6,7 +6,7 @@
           class="footer__container--content-container__logo-container"
           @click="onGoHome"
         >
-          <nuxt-img src="whiteLogo.png" alt="logo" />
+          <nuxt-img loading="lazy" src="whiteLogo.png" alt="logo" />
         </div>
 
         <div class="footer__container--content-container__text-container">
@@ -51,7 +51,7 @@
       </div>
       <div class="footer__container--image-container">
         <div class="footer__container--image-container__image-content">
-          <nuxt-img src="cityBike.png" alt="" />
+          <nuxt-img loading="lazy" src="cityBike.png" alt="" />
         </div>
         <div class="footer__container--bottom-section">
           <p>Israel x Moyowa</p>

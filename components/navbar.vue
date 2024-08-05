@@ -2,7 +2,7 @@
   <div class="navbar" :class="{ whiteNav: !isHomeRoute }">
     <div class="navbar__container" ref="navbarRef">
       <div class="navbar__container--logo-container" @click="onGoHome">
-        <nuxt-img src="logo.png" alt="logo" />
+        <nuxt-img loading="lazy" src="logo.png" alt="logo" />
       </div>
 
       <div class="navbar__container--links-container">

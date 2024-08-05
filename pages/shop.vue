@@ -1,17 +1,11 @@
 <template>
   <div class="Page">
     <div class="shopPage__banner">
-      <img src="../assets/storeBannerImage.png" alt="" />
+      <nuxt-img loading="lazy" :src="filteredBackgrounds" alt="" />
 
       <div class="shopPage__banner--text-container">
-        <!-- <h1
-          v-for="(type, index) in selectedBikeTypes"
-          :key="index"
-          v-if="selectedBikeTypes.length > 0"
-        >
-          {{ type }}&nbsp;
-        </h1> -->
-        <h1>Bikes</h1>
+        <h1 v-if="selectedBikeType">{{ selectedBikeType }}</h1>
+        <h1 v-else>Bikes</h1>
       </div>
     </div>
     <div class="shopPage__bikes-container">
@@ -23,7 +17,7 @@
             v-for="(type, index) in types"
             :key="index"
             @click="onSelectType(type)"
-            :class="{ active: selectedBikeTypes.includes(type) }"
+            :class="{ active: selectedBikeType === type }"
           >
             {{ type }}
           </p>
@@ -49,6 +43,9 @@ import { storeToRefs } from "pinia";
 import useBikeStore from "../stores/BikesStore";
 import type { bike, bikeTypes } from "../types/declarations";
 
+const route = useRoute();
+const router = useRouter();
+const type = route.query.type;
 const BikesStore = useBikeStore();
 const { bikes } = storeToRefs(BikesStore);
 const types: bikeTypes[] = [
@@ -58,23 +55,39 @@ const types: bikeTypes[] = [
   "Electric Bikes",
 ];
 
-const selectedBikeTypes = ref<bikeTypes[]>([]);
+const selectedBikeType = ref<bikeTypes | null>((type as bikeTypes) || null);
 
 const onSelectType = (type: bikeTypes) => {
-  if (selectedBikeTypes.value.includes(type)) {
-    selectedBikeTypes.value = selectedBikeTypes.value.filter((t) => t !== type);
+  if (selectedBikeType.value === type) {
+    selectedBikeType.value = null;
+    router.push({ query: { ...route.query, type: undefined } });
   } else {
-    selectedBikeTypes.value.push(type);
+    selectedBikeType.value = type;
+    router.push({ query: { ...route.query, type: type } });
   }
 };
 
 const filteredBikes = computed(() => {
-  if (selectedBikeTypes.value.length === 0) {
+  if (selectedBikeType.value === null) {
     return bikes.value;
   }
   return bikes.value.filter((bike) =>
-    bike.type.some((type) => selectedBikeTypes.value.includes(type))
+    bike.type.some((type) => selectedBikeType.value === type)
   );
+});
+
+const filteredBackgrounds = computed(() => {
+  if (!selectedBikeType.value) {
+    return "bikesImage";
+  } else if (selectedBikeType.value === "City Bikes") {
+    return "roadBikesImage2";
+  } else if (selectedBikeType.value === "Road Bikes") {
+    return "cityBikesImage";
+  } else if (selectedBikeType.value === "Electric Bikes") {
+    return "electricBikesImage";
+  } else if (selectedBikeType.value === "Mountain Bikes") {
+    return "mountainBikesImage";
+  }
 });
 </script>
 
@@ -92,11 +105,15 @@ const filteredBikes = computed(() => {
     width: 100%;
     height: 20rem;
     position: relative;
+    overflow: hidden;
 
     img {
       height: 100%;
+
       width: 100%;
       object-fit: cover;
+      scale: 1;
+      // object-position: 20%;
     }
 
     &--text-container {

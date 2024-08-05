@@ -2,7 +2,7 @@
   <div class="quoteSection">
     <div class="quoteSection__container">
       <div class="quoteSection__container--quotes-container" ref="sectionRef">
-        <nuxt-img src="quote.svg" alt="" />
+        <nuxt-img loading="lazy" src="quote.svg" alt="" />
 
         <div class="quoteSection__container--quotes-container__text-container">
           <p>
@@ -21,7 +21,7 @@
     </div>
 
     <div class="quoteSection__image-container">
-      <nuxt-img src="quoteBike.png" alt="" />
+      <nuxt-img loading="lazy" src="quoteBike.png" alt="" />
     </div>
   </div>
 </template>
