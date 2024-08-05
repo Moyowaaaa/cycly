@@ -4,7 +4,7 @@
     <Preloader v-if="!imagesHaveLoaded" />
 
     <!-- Conditionally render the main content -->
-    <NuxtLayout>
+    <NuxtLayout v-if="imagesHaveLoaded">
       <NuxtPage />
     </NuxtLayout>
   </div>
@@ -26,6 +26,11 @@ onMounted(() => {
   if (!imagesHaveLoaded.value) {
     loadAssets();
   }
+});
+
+// Watch for changes in loading state
+watchEffect(() => {
+  console.log(percentageOfLoadedImages.value, imagesHaveLoaded.value);
 });
 </script>
 
