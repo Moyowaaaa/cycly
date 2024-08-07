@@ -89,8 +89,13 @@ onMounted(() => {
   align-items: center;
   justify-content: space-between;
   min-width: 20rem;
+
+  @media (min-width: 900px) and (max-width: 1250px) {
+    min-width: 15rem;
+  }
   //   width: 22%;
-  height: 30rem;
+  min-height: 30rem;
+  max-height: 30rem;
   border-radius: 10px;
   position: relative;
   overflow: hidden;

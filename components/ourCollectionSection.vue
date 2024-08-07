@@ -54,6 +54,8 @@ const collections = ref<collectionType[]>([
   opacity: 1;
   font-family: "sans-regular";
   height: max-content;
+  box-sizing: border-box;
+
   background-color: #ffffff;
 
   &__container {
@@ -64,6 +66,7 @@ const collections = ref<collectionType[]>([
     max-width: 112rem;
     margin: 0 auto;
     padding: 6rem 4rem;
+    box-sizing: border-box;
 
     &--title-section {
       font-family: sans-bold;

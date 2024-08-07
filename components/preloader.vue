@@ -1,6 +1,9 @@
 <template>
   <div class="preloader" v-if="!imagesHaveLoaded">
     <div class="preloader__container">
+      <div class="preloader__container--counter-container">
+        <p>Loading Assets</p>
+      </div>
       <div class="preloader__container--top-container">
         <h1 class="preloader__container--top-container__loading-text">
           {{ currentAction }}
@@ -97,6 +100,14 @@ const startActionLoop = () => {
       duration: 2,
       opacity: 1,
     });
+
+  gsap.to([".preloader__container--counter-container p"], {
+    y: 0,
+    opacity: 1,
+    duration: 1,
+    delay: 1,
+    clipPath: "polygon(0 100%, 100% 100%, 100% 0, 0 0)",
+  });
 };
 
 onMounted(() => {
@@ -105,16 +116,31 @@ onMounted(() => {
   }
 });
 
-// watchEffect(() => {
-//   if (percentageOfLoadedImages.value > 0) {
-//     gsap.to(".preloader__container--top-container__loading-text", {
-//       y: 0,
-//       opacity: 1,
-//       duration: 1,
-//       clipPath: "polygon(0 100%, 100% 100%, 100% 0, 0 0)",
-//     });
-//   }
-// });
+const preloaderTransitionOut = () => {
+  gsap.to(".preloader__container--counter-container p", {
+    clipPath: "polygon(0 10%, 10% 10%, 100% 0, 0 0)",
+    opacity: 0,
+    duration: 1,
+    delay: 2,
+    ease: "power3.inOut",
+  });
+
+  gsap.to(".preloader", {
+    yPercent: -100,
+    duration: 1.1,
+    ease: "power4.inOut",
+    onComplete: () => {
+      imagesStore.imagesHaveLoaded = true;
+    },
+  });
+};
+
+watchEffect(() => {
+  console.log(percentageOfLoadedImages.value === 100);
+  if (percentageOfLoadedImages.value === 100) {
+    preloaderTransitionOut();
+  }
+});
 </script>
 
 <style scoped lang="scss">
@@ -135,6 +161,25 @@ onMounted(() => {
     margin: auto;
     width: 100%;
     padding: 2rem 4rem;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &--counter-container {
+      width: max-content;
+      position: absolute;
+      right: 2rem;
+      top: 2rem;
+      font-family: sans-medium;
+      display: flex;
+      gap: 0.5rem;
+      align-items: center;
+
+      p {
+        opacity: 0;
+      }
+    }
 
     &--top-container {
       display: flex;

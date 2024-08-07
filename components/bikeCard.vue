@@ -166,6 +166,8 @@ onMounted(() => {
   background-color: #f9f6ff;
   font-family: "dm-mono";
   border-radius: 5px;
+  min-width: 100%;
+  max-width: 100%;
 
   &__image-container {
     width: 100%;
