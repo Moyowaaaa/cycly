@@ -279,4 +279,17 @@ const onGoHome = () => {
   transform: scale3d(0, 1, 1);
   transform-origin: 0% 50%;
 }
+
+//small laptops
+@media (min-width: 900px) and (max-width: 1250px) {
+  .footer {
+    &__container {
+      &--content-container {
+        max-width: 120rem;
+        margin: 0 auto;
+        padding: 2rem;
+      }
+    }
+  }
+}
 </style>

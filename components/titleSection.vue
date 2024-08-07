@@ -150,6 +150,13 @@ onMounted(() => {
     margin: 0 auto;
     padding: 2rem 4rem;
 
+    //small latptops
+
+    @media (min-width: 900px) and (max-width: 1250px) {
+      padding: 2rem;
+      max-width: 120rem;
+    }
+
     &--left-column {
       width: 50%;
       display: flex;

@@ -152,6 +152,11 @@ const filteredBackgrounds = computed(() => {
       gap: 4rem;
       height: max-content;
 
+      @media (min-width: 900px) and (max-width: 1300px) {
+        border: 2px solid red;
+        min-width: 11rem;
+      }
+
       h1 {
         font-size: 1.375rem;
         font-weight: 500;
@@ -164,7 +169,7 @@ const filteredBackgrounds = computed(() => {
         gap: 1rem;
         font-weight: 400;
         font-family: "dm-mono";
-        padding-bottom: 10rem;
+        padding-bottom: 8rem;
         cursor: pointer;
         width: max-content;
 
@@ -178,7 +183,7 @@ const filteredBackgrounds = computed(() => {
       display: grid;
       width: 100%;
       grid-template-columns: repeat(3, 1fr);
-      gap: 3rem;
+      gap: 2rem;
     }
   }
 }
@@ -192,5 +197,15 @@ const filteredBackgrounds = computed(() => {
   border: 0.5px solid #808080;
   opacity: 0.6;
   align-self: flex-start;
+}
+
+@media (min-width: 900px) and (max-width: 1300px) {
+  .shopPage {
+    &__bikes-container {
+      max-width: 150rem;
+      border: 2px solid blue;
+      padding: 2rem;
+    }
+  }
 }
 </style>

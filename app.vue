@@ -30,7 +30,10 @@ onMounted(() => {
 
 // Watch for changes in loading state
 watchEffect(() => {
-  console.log(percentageOfLoadedImages.value, imagesHaveLoaded.value);
+  console.log(
+    Math.round(percentageOfLoadedImages.value),
+    imagesHaveLoaded.value
+  );
 });
 </script>
 

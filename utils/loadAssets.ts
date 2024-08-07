@@ -50,7 +50,6 @@ export function loadAssets(): Promise<void[]> {
         preloadImagesStore.numberOfLoadedImages++;
         if (preloadImagesStore.numberOfLoadedImages === images.length) {
           console.log("images from: https://unsplash.com");
-          preloadImagesStore.imagesHaveLoaded = true;
         }
         resolve();
       };

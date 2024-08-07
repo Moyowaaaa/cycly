@@ -215,4 +215,27 @@ const onGoHome = () => {
   background-color: white;
   color: #101010;
 }
+
+//small latptops
+
+@media (min-width: 900px) and (max-width: 1250px) {
+  .navbar {
+    &__container {
+      padding: 2rem;
+
+      &--logo-container {
+        max-height: 3rem;
+        max-width: 3rem;
+      }
+
+      &--links-container {
+        gap: 0.5rem;
+        &__additional-links {
+          gap: 0.8rem;
+          font-size: 0.8rem;
+        }
+      }
+    }
+  }
+}
 </style>
