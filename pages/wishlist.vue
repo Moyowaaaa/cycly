@@ -1,12 +1,12 @@
 <template>
   <div class="wishlistPage">
     <div class="wishlistPage__banner">
-      <nuxt-img loading="lazy" src="showcaseImage8.png" alt="" />
+      <nuxt-img loading="lazy" src="mountainBikes" alt="" />
       <div class="wishlistPage__banner--text-container">
         <h1>WISH-LIST</h1>
       </div>
     </div>
-    <WishlistEmptyState v-if="wishlist.length === 0" />
+    <LazyWishlistEmptyState v-if="wishlist.length === 0" />
     <div class="wishlistPage__container" v-else>
       <div class="wishlistPage__container--product-section">
         <BikeCard

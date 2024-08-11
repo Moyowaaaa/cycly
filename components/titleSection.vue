@@ -31,6 +31,7 @@
         <p>Discover the joy of cycling with our premium range of bicycles.</p>
       </div>
     </div>
+    <nuxt-img loading="lazy" src="titleBike.png" alt="" />
   </div>
 </template>
 
@@ -136,10 +137,20 @@ onMounted(() => {
   left: 0;
   right: 0;
   color: white;
-  background-image: url("https://res.cloudinary.com/dyap7epew/image/upload/v1722255246/cycly/titleBike.png");
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-attachment: fixed;
+  // background-image: url("https://res.cloudinary.com/dyap7epew/image/upload/v1722255246/cycly/titleBike.png");
+  // background-size: cover;
+  // background-repeat: no-repeat;
+  // background-attachment: fixed;
+
+  img {
+    height: 100vh;
+    max-height: 100rem;
+    z-index: -20;
+    position: fixed;
+    width: 100%;
+    object-fit: cover;
+    top: 0;
+  }
 
   &__container {
     display: flex;
@@ -172,6 +183,7 @@ onMounted(() => {
         color: #d9d9d9;
         opacity: 0;
         scale: 1;
+        z-index: 200;
       }
 
       button {

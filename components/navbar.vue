@@ -96,14 +96,10 @@ const navbarRef = ref<HTMLDivElement | null>(null);
 watchEffect(() => {
   if (route.name === "index") {
     isHomeRoute.value = true;
-    document?.querySelector(".homePage")?.scrollIntoView({
-      behavior: "smooth",
-    });
+    window.scroll(0, 0);
   } else {
     isHomeRoute.value = false;
-    document?.querySelector(".homePage")?.scrollIntoView({
-      behavior: "smooth",
-    });
+    window.scroll(0, 0);
   }
 });
 onMounted(() => {

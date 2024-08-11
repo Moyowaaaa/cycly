@@ -7,7 +7,7 @@
       </div>
     </div>
 
-    <CartEmptyState v-if="CartStore.productsInCart.length === 0" />
+    <LazyCartEmptyState v-if="CartStore.productsInCart.length === 0" />
 
     <div class="cartPage__main-container" v-else>
       <div class="cartPage__main-container--step-count-container">
