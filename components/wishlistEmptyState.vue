@@ -23,7 +23,7 @@
       </nuxt-link>
 
       <div class="wishlistEmptyState__image-container">
-        <img src="../assets/emptyImage2.png" alt="" />
+        <nuxt-img loading="lazy" src="emptyImage2" alt="" />
       </div>
     </div>
   </div>

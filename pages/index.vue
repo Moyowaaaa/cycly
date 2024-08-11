@@ -2,7 +2,6 @@
   <div class="homePage">
     <TitleSection />
     <LazyOurCollectionSection />
-    <!-- <TestSection /> -->
     <LazyShowcaseSection />
     <LazyQuoteSection />
     <LazyJoinUsSection />

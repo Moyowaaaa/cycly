@@ -25,7 +25,7 @@
     </div>
 
     <div class="cartEmptyState__image-container">
-      <img src="../assets/empty.png" alt="" />
+      <nuxt-img loading="lazy" src="empty" alt="" />
     </div>
   </div>
 </template>

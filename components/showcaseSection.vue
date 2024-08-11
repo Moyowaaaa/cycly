@@ -117,6 +117,7 @@ onMounted(() => {
   display: flex;
   flex-direction: column;
   gap: 2rem;
+  margin-top: -2rem;
   padding: 4rem 0 12rem;
   position: relative;
   background: linear-gradient(0deg, #151515 0%, #202020 50%, #151515 100%);
