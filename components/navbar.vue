@@ -107,6 +107,8 @@ const scrollUp = (where: string) => {
         behavior: "smooth",
       });
     }
+  } else {
+    window.scroll(0, 0);
   }
 };
 

@@ -46,7 +46,9 @@
         </div>
 
         <div class="footer__container--content-container__heroText">
-          <h1 class="flicker">CYCLE OF LIFE.</h1>
+          <h1 class="footer__container--content-container__heroText--text">
+            CYCLE OF LIFE.
+          </h1>
         </div>
       </div>
       <div class="footer__container--image-container">
@@ -54,7 +56,15 @@
           <nuxt-img loading="lazy" src="cityBike.png" alt="" />
         </div>
         <div class="footer__container--bottom-section">
-          <p>Israel x Moyowa</p>
+          <div class="credits">
+            <a href="https://behance.net/israeladeniyi8" target="_blank"
+              ><p class="link">Israel</p></a
+            >
+            x
+            <a href="https://github.com/moyowaaaa" target="_blank">
+              <p class="link">Moyowa</p>
+            </a>
+          </div>
           <div class="footer__container--bottom-section__copy-container">
             &copy;&nbsp;Cycle&nbsp; <span>{{ year }}</span>
           </div>
@@ -67,15 +77,98 @@
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted } from "vue";
+import { ref, onMounted, onUnmounted } from "vue";
 import { useRouter } from "vue-router";
+import { intersectionObserver } from "../animations/useIntersectionObserver";
+import gsap from "gsap";
+import Splitting from "splitting";
 
-let year = ref<any>();
+let year = ref<number>();
 const router = useRouter();
+const isImageVisible = ref(false);
+
+let cleanup: (() => void) | null = null;
 
 onMounted(() => {
+  const largeTextContainer = document.querySelector(
+    ".footer__container--content-container__heroText"
+  );
+  const largeText = document.querySelector(
+    ".footer__container--content-container__heroText--text"
+  );
+  const image = document.querySelector(
+    ".footer__container--image-container__image-content img"
+  ) as Element;
+
+  console.log({ largeText });
+
+  const result = Splitting({ target: largeText, by: "chars" });
+  console.log({ result });
+
   const date = new Date();
   year.value = date.getFullYear();
+
+  if (image) {
+    cleanup = intersectionObserver(
+      image,
+      { threshold: 0.02 },
+      (isIntersecting) => {
+        isImageVisible.value = isIntersecting;
+        if (isIntersecting) {
+          gsap.fromTo(
+            image,
+            { yPercent: 10, opacity: 0 },
+            {
+              duration: 1.2,
+              yPercent: 0,
+              opacity: 1,
+              delay: 0.2,
+              ease: "power4.inOut",
+            }
+          );
+        } else {
+          gsap.to(image, { opacity: 0, duration: 0.8 });
+        }
+      }
+    );
+  }
+
+  if (largeTextContainer) {
+    console.log(result);
+
+    result[0].chars.forEach((a: any) => console.log(a));
+    cleanup = intersectionObserver(
+      largeTextContainer,
+      { threshold: 0.2 },
+      (isIntersecting) => {
+        if (isIntersecting) {
+          result[0].chars.forEach((a: gsap.TweenTarget, i: number) => {
+            gsap.to(a, {
+              opacity: 1, // Animate to full opacity
+              // duration: gsap.utils.random(0.1, 0.3), // Random duration for the effect
+              duration: 0.2,
+              ease: "power3.inOut",
+              delay: i * gsap.utils.random(0.1, 0.2), // Random delay for staggered effect
+            });
+          });
+        } else {
+          result[0].chars.forEach((a: gsap.TweenTarget) => {
+            gsap.to(a, {
+              opacity: 0.2, // Animate to full opacity
+              duration: 0.1, // Random duration for the effect
+              ease: "power3.inOut",
+            });
+          });
+        }
+      }
+    );
+  }
+});
+
+onUnmounted(() => {
+  if (cleanup) {
+    cleanup();
+  }
 });
 
 const onGoHome = () => {
@@ -85,6 +178,7 @@ const onGoHome = () => {
   });
 };
 </script>
+
 <style scoped lang="scss">
 .footer {
   position: relative;
@@ -179,7 +273,6 @@ const onGoHome = () => {
         font-size: 9rem;
         text-align: center;
         color: #d9d9d9;
-        animation: reveal 0.5s cubic-bezier(0.77, 0, 0.175, 1) 0.5s;
       }
     }
     &--image-container {
@@ -194,6 +287,8 @@ const onGoHome = () => {
       &__image-content {
         width: 45rem;
         height: 30rem;
+        max-height: 30rem;
+        overflow: hidden;
 
         img {
           height: 100%;
@@ -291,5 +386,11 @@ const onGoHome = () => {
       }
     }
   }
+}
+
+.credits {
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
 }
 </style>

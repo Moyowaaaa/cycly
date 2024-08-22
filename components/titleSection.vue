@@ -90,12 +90,14 @@ onMounted(() => {
     gsap.fromTo(
       titleSectionRef.value.children[0].children[0].children[0],
       {
-        scale: 1.1,
+        scale: 1.05,
+        opacity: 2,
       },
       {
-        scale: 0.8,
-        duration: 1.2,
-        delay: 2,
+        opacity: 0,
+        y: 0,
+        scale: 1,
+        delay: 1.2,
         ease: "power3.inOut",
         scrollTrigger: {
           trigger: titleSectionRef.value.children[0].children[0].children,

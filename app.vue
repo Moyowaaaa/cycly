@@ -1,9 +1,7 @@
 <template>
   <div>
-    <!-- Show Preloader if images are not loaded -->
     <Preloader />
 
-    <!-- Conditionally render the main content -->
     <NuxtLayout v-if="imagesHaveLoaded">
       <NuxtPage />
     </NuxtLayout>
@@ -20,7 +18,6 @@ import usePreloadImagesStore from "~/stores/ImagesPreloader";
 const imagesStore = usePreloadImagesStore();
 const { percentageOfLoadedImages, imagesHaveLoaded } = storeToRefs(imagesStore);
 
-// Handle image loading on component mount
 onMounted(() => {
   new Interactions();
   if (!imagesHaveLoaded.value) {
@@ -28,7 +25,6 @@ onMounted(() => {
   }
 });
 
-// Watch for changes in loading state
 watchEffect(() => {
   console.log(
     Math.round(percentageOfLoadedImages.value),

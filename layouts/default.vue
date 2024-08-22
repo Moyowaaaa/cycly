@@ -12,7 +12,7 @@
 <script setup lang="ts">
 import gsap from "gsap";
 
-const timeline = gsap.timeline({ delay: 1.5 });
+const timeline = gsap.timeline({ delay: 1.8 });
 provide("timeline", timeline);
 </script>
 
