@@ -43,15 +43,22 @@ const tl: any = inject("timeline");
 
 onMounted(() => {
   if (titleSectionRef.value && buttonContainerRef.value) {
-    gsap.set([titleSectionRef.value.children[0].children[0].children[0]], {
-      opacity: 1.1,
-      y: 100,
-    });
+    tl.fromTo(
+      [titleSectionRef.value.children[0].children[0].children[0]],
+      {
+        opacity: 0,
+      },
+      {
+        opacity: 1.1,
+        scale: 1,
+        // y: 100,
+      }
+    );
 
-    console.log(buttonContainerRef.value.children[0]);
+    console.log(titleSectionRef.value.children[0].children[0].children[0]);
 
-    gsap.set(buttonContainerRef.value.children[0], {
-      opacity: 0,
+    tl.to(buttonContainerRef.value.children[0].children, {
+      opacity: 1,
     });
 
     tl.to(
@@ -80,29 +87,35 @@ onMounted(() => {
       ease: "power3.inOut",
     });
 
-    gsap.to(titleSectionRef.value.children[0].children[0].children[0], {
-      scale: 0.8,
-      duration: 1.2,
-      delay: 2,
-      ease: "power3.inOut",
-      scrollTrigger: {
-        trigger: titleSectionRef.value.children[0].children[0].children,
-        scrub: 1.5,
-
-        start: "99% 100%",
-        // end: "  top 70%",
+    gsap.fromTo(
+      titleSectionRef.value.children[0].children[0].children[0],
+      {
+        scale: 1.1,
       },
-    });
+      {
+        scale: 0.8,
+        duration: 1.2,
+        delay: 2,
+        ease: "power3.inOut",
+        scrollTrigger: {
+          trigger: titleSectionRef.value.children[0].children[0].children,
+          scrub: -1,
 
-    gsap.to(buttonContainerRef.value.children[0], {
+          start: "99% 100%",
+          // end: "  top 70%",
+        },
+      }
+    );
+
+    gsap.to(buttonContainerRef.value.children[0].children, {
       y: -100,
       duration: 1.2,
       delay: 2,
-
+      marginTop: "40px",
       ease: "power3.inOut",
       scrollTrigger: {
         trigger: buttonContainerRef.value.children[0],
-        scrub: 1.5,
+        scrub: -1,
 
         start: "95% 100%",
         // end: "  top 70%",
@@ -182,7 +195,7 @@ onMounted(() => {
         line-height: 5rem;
         color: #d9d9d9;
         opacity: 0;
-        scale: 1;
+        // scale: 1;
         z-index: 200;
       }
 
