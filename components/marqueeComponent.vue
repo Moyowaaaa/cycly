@@ -3,92 +3,19 @@
     <div class="secondSection__title-container">
       <h1>CYCLE <span>BEYOND LIMIT.</span></h1>
     </div>
-    <div class="secondSection__container marquee__inner">
-      <div
-        class="secondSection__container--card"
-        v-for="(showcaseImage, index) in showcaseImages"
-        :key="index"
-      >
-        <nuxt-img loading="lazy" :src="showcaseImage" alt="" />
-      </div>
-      <div
-        class="secondSection__container--card"
-        v-for="(showcaseImage, index) in showcaseImages"
-        :key="index"
-      >
-        <nuxt-img loading="lazy" :src="showcaseImage" alt="" />
-      </div>
-      <div
-        class="secondSection__container--card"
-        v-for="(showcaseImage, index) in showcaseImages"
-        :key="index"
-      >
-        <nuxt-img loading="lazy" :src="showcaseImage" alt="" />
-      </div>
-      <div
-        class="secondSection__container--card"
-        v-for="(showcaseImage, index) in showcaseImages"
-        :key="index"
-      >
-        <nuxt-img loading="lazy" :src="showcaseImage" alt="" />
-      </div>
-      <div
-        class="secondSection__container--card"
-        v-for="(showcaseImage, index) in showcaseImages"
-        :key="index"
-      >
-        <nuxt-img loading="lazy" :src="showcaseImage" alt="" />
-      </div>
-      <div
-        class="secondSection__container--card"
-        v-for="(showcaseImage, index) in showcaseImages"
-        :key="index"
-      >
-        <nuxt-img loading="lazy" :src="showcaseImage" alt="" />
-      </div>
-      <div
-        class="secondSection__container--card"
-        v-for="(showcaseImage, index) in showcaseImages"
-        :key="index"
-      >
-        <nuxt-img loading="lazy" :src="showcaseImage" alt="" />
-      </div>
-      <div
-        class="secondSection__container--card"
-        v-for="(showcaseImage, index) in showcaseImages"
-        :key="index"
-      >
-        <nuxt-img loading="lazy" :src="showcaseImage" alt="" />
-      </div>
-      <div
-        class="secondSection__container--card"
-        v-for="(showcaseImage, index) in showcaseImages"
-        :key="index"
-      >
-        <nuxt-img loading="lazy" :src="showcaseImage" alt="" />
-      </div>
-      <div
-        class="secondSection__container--card"
-        v-for="(showcaseImage, index) in showcaseImages"
-        :key="index"
-      >
-        <nuxt-img loading="lazy" :src="showcaseImage" alt="" />
-      </div>
-      <div
-        class="secondSection__container--card"
-        v-for="(showcaseImage, index) in showcaseImages"
-        :key="index"
-      >
-        <nuxt-img loading="lazy" :src="showcaseImage" alt="" />
-      </div>
-      <div
-        class="secondSection__container--card"
-        v-for="(showcaseImage, index) in showcaseImages"
-        :key="index"
-      >
-        <nuxt-img loading="lazy" :src="showcaseImage" alt="" />
+
+    <div class="scrolling-image">
+      <div class="rail">
+        <div
+          class="secondSection__container--card"
+          v-for="(showcaseImage, index) in showcaseImages"
+          :key="index"
+        >
+          <nuxt-img loading="lazy" :src="showcaseImage" alt="" />
+        </div>
       </div>
     </div>
+
     <div class="secondSection__button-container">
       <nuxt-link to="/shop">
         <button class="secondSection__button-container__button">
@@ -114,9 +41,11 @@
 </template>
 
 <script setup lang="ts">
+import { onMounted, nextTick } from "vue";
 import gsap from "gsap";
-import ScrollTrigger from "gsap/ScrollTrigger";
-gsap.registerPlugin(ScrollTrigger);
+import Observer from "gsap/Observer";
+
+gsap.registerPlugin(Observer);
 
 const showcaseImages = [
   "showcaseImage1",
@@ -124,54 +53,161 @@ const showcaseImages = [
   "showcaseImage3",
   "showcaseImage4",
   "showcaseImage5",
-  "showcaseImage1",
-  "showcaseImage2",
-  "showcaseImage3",
-  "showcaseImage4",
-  "showcaseImage5",
-  "showcaseImage1",
-  "showcaseImage2",
-  "showcaseImage3",
-  "showcaseImage4",
-  "showcaseImage5",
+  "showcaseImage6",
+  "showcaseImage7",
+
+  "showcaseImage9",
+  "showcaseImage10",
+  "showcaseImageX",
 ];
 
-onMounted(() => {
-  // if (process.client) {
-  //   document.addEventListener("scroll", function () {
-  //     const marqueeInner = document.querySelector(".marquee__inner");
-  //     const scrollSpeed = window.scrollY / 1000 + 1; // Adjust speed factor as needed
-  //     marqueeInner.style.animationDuration = `${25 / scrollSpeed}s`;
-  //   });
-  // }
-  let lastScrollTop = 0;
-  const marquee = gsap.to(".marquee__inner", {
-    xPercent: -50,
-    duration: 25,
-    repeat: -1,
-    ease: "linear",
-    paused: true,
+// Function for creating a horizontal loop animation
+function horizontalLoop(
+  items: HTMLElement[],
+  config: {
+    repeat?: number;
+    paused?: boolean;
+    speed?: number;
+    snap?: number | number[];
+    paddingRight?: number;
+    reversed?: boolean;
+  } = {}
+): gsap.core.Timeline {
+  const tl = gsap.timeline({
+    repeat: config.repeat,
+    paused: config.paused,
+    defaults: { ease: "none" },
+    onReverseComplete: () => tl.totalTime(tl.rawTime() + tl.duration() * 100),
   });
 
-  document.addEventListener("scroll", function () {
-    const scrollTop = window.scrollY || document.documentElement.scrollTop;
-    const direction = scrollTop > lastScrollTop ? "down" : "up";
+  const length = items.length;
+  const startX = items[0]?.offsetLeft ?? 0;
+  const times: number[] = [];
+  const widths: number[] = [];
+  const xPercents: number[] = [];
+  let curIndex = 0;
+  const pixelsPerSecond = (config.speed || 1) * 100;
+  const snap =
+    (config as any).snap === false
+      ? (v: number) => v
+      : gsap.utils.snap(config.snap || 1);
+  let totalWidth = 0;
 
-    if (direction === "down") {
-      gsap.to(marquee, {
-        timeScale: -2,
-      });
-    } else {
-      gsap.to(marquee, {
-        timeScale: 2,
-      });
+  gsap.set(items, {
+    xPercent: (i, el) => {
+      const w = (widths[i] = parseFloat(
+        (gsap as any).getProperty(el, "width", "px")
+      ));
+      xPercents[i] = snap(
+        (parseFloat((gsap as any).getProperty(el, "x", "px")) / w) * 100 +
+          (gsap as any).getProperty(el, "xPercent")
+      );
+      return xPercents[i];
+    },
+  });
+
+  gsap.set(items, { x: 0 });
+
+  totalWidth =
+    items[length - 1]?.offsetLeft +
+    (xPercents[length - 1] / 100) * widths[length - 1] -
+    startX +
+    items[length - 1]?.offsetWidth *
+      (gsap as any).getProperty(items[length - 1], "scaleX") +
+    (config.paddingRight || 0);
+
+  items.forEach((item, i) => {
+    const curX = (xPercents[i] / 100) * widths[i];
+    const distanceToStart = item.offsetLeft + curX - startX;
+    const distanceToLoop =
+      distanceToStart + widths[i] * (gsap as any).getProperty(item, "scaleX");
+
+    tl.to(
+      item,
+      {
+        xPercent: snap(((curX - distanceToLoop) / widths[i]) * 100),
+        duration: distanceToLoop / pixelsPerSecond,
+      },
+      0
+    )
+      .fromTo(
+        item,
+        {
+          xPercent: snap(
+            ((curX - distanceToLoop + totalWidth) / widths[i]) * 100
+          ),
+        },
+        {
+          xPercent: xPercents[i],
+          duration:
+            (curX - distanceToLoop + totalWidth - curX) / pixelsPerSecond,
+          immediateRender: false,
+        },
+        distanceToLoop / pixelsPerSecond
+      )
+      .add("label" + i, distanceToStart / pixelsPerSecond);
+
+    times[i] = distanceToStart / pixelsPerSecond;
+  });
+
+  function toIndex(index: number, vars: gsap.TweenVars = {}) {
+    Math.abs(index - curIndex) > length / 2 &&
+      (index += index > curIndex ? -length : length);
+    const newIndex = gsap.utils.wrap(0, length, index);
+    let time = times[newIndex];
+
+    if (time > tl.time() !== index > curIndex) {
+      vars.modifiers = { time: gsap.utils.wrap(0, tl.duration()) };
+      time += tl.duration() * (index > curIndex ? 1 : -1);
     }
 
-    lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
-  });
+    curIndex = newIndex;
+    vars.overwrite = true;
+    return tl.tweenTo(time, vars);
+  }
 
-  marquee.play();
-  marquee.repeat(-1);
+  tl.next = (vars?: gsap.TweenVars) => toIndex(curIndex + 1, vars);
+  tl.previous = (vars?: gsap.TweenVars) => toIndex(curIndex - 1, vars);
+  tl.current = () => curIndex;
+  tl.toIndex = (index: number, vars?: gsap.TweenVars) => toIndex(index, vars);
+  tl.times = times;
+
+  tl.progress(1, true).progress(0, true); // Pre-render for performance
+
+  if (config.reversed) {
+    tl.vars.onReverseComplete!();
+    tl.reverse();
+  }
+
+  return tl;
+}
+
+onMounted(() => {
+  nextTick(() => {
+    const scrollingText = gsap.utils.toArray<HTMLElement>(".rail div");
+
+    if (scrollingText.length > 0) {
+      const tl = horizontalLoop(scrollingText, {
+        repeat: -1,
+      });
+
+      Observer.create({
+        onChangeY(self) {
+          let factor = 2.5;
+          if (self.deltaY < 0) {
+            factor *= -1;
+          }
+
+          gsap
+            .timeline({ defaults: { ease: "none" } })
+            .to(tl, { timeScale: factor * 2.5, duration: 0.2 })
+            .to(tl, { timeScale: factor / 2.5, duration: 1 }, "+=0.3");
+        },
+      });
+    } else {
+      console.error("No elements found for selector .rail h4");
+    }
+  });
 });
 </script>
 
@@ -241,57 +277,38 @@ onMounted(() => {
       }
     }
   }
-
-  &__container {
-    width: 200%; /* Make the container twice as wide to accommodate duplicated content */
-    height: 40rem;
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-    overflow: hidden;
-    position: relative;
-    will-change: transform;
-    padding-top: 2.4rem;
-    padding-bottom: 1rem;
-  }
-
-  &__container--card {
-    height: 23rem;
-    min-width: 18rem;
-    max-width: 18rem;
-    border-radius: 10px;
-    img {
-      height: 100%;
-      width: 100%;
-      border-radius: 10px;
-      object-fit: cover;
-      object-position: center;
-    }
-  }
 }
 
-@keyframes marquee-left {
-  0% {
-    transform: translateX(0);
-  }
-  100% {
-    transform: translateX(-50%);
-  }
-}
-
-@keyframes marquee-right {
-  0% {
-    transform: translateX(-50%);
-  }
-  100% {
-    transform: translateX(0);
-  }
-}
-
-.marquee__inner {
+.scrolling-image {
+  overflow: hidden;
+  width: 100%;
+  height: 100vh;
   display: flex;
-  white-space: nowrap;
-  will-change: transform;
+  align-items: center;
+  background-color: transparent;
+  padding-left: 1rem;
+  .rail {
+    display: flex;
+    padding-left: 1rem;
+    gap: 1rem;
+  }
+}
+
+.secondSection__container--card {
+  height: 23rem;
+  min-width: 18rem;
+  max-width: 18rem;
+  border-radius: 10px;
+  margin: 0 1rem;
+  img {
+    height: 100%;
+    width: 100%;
+    border-radius: 10px;
+    object-fit: cover;
+    margin: 0 1rem;
+
+    object-position: center;
+  }
 }
 
 .secondSection__button-container__button {

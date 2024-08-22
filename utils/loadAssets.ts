@@ -37,6 +37,16 @@ export function loadAssets(): Promise<void[]> {
     `${prefixUrl}cityBikesImage`,
     `${prefixUrl}electricBikesImage`,
     `${prefixUrl}mountainBikesImage`,
+    `${prefixUrl}showcaseImage1`,
+    `${prefixUrl}showcaseImage2`,
+    `${prefixUrl}showcaseImage3`,
+    `${prefixUrl}showcaseImage4`,
+    `${prefixUrl}showcaseImage5`,
+    `${prefixUrl}showcaseImage6`,
+    `${prefixUrl}showcaseImage7`,
+    `${prefixUrl}showcaseImage9`,
+    `${prefixUrl}showcaseImage10`,
+    `${prefixUrl}showcaseImageX`,
   ];
 
   preloadImagesStore.numberOfImagesToLoad = images.length;

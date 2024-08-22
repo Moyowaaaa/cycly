@@ -1,12 +1,14 @@
 <template>
   <div class="joinUsSection">
-    <div class="joinUsSection__container">
+    <div class="joinUsSection__container" ref="sectionRef">
       <h1>Join the Cycle Revolution</h1>
 
       <div class="joinUsSection__container--text-container">
-        Join the e-bike revolution with ReCycle. Our sustainable e-bikes save
-        you money and reduce your carbon footprint. Choose your model and join
-        the revolution today!
+        <p>
+          Join the e-bike revolution with ReCycle. Our sustainable e-bikes save
+          you money and reduce your carbon footprint. Choose your model and join
+          the revolution today!
+        </p>
       </div>
       <nuxt-link to="/shop">
         <button class="joinUsSection__container--button">
@@ -31,7 +33,44 @@
   </div>
 </template>
 
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import gsap from "gsap";
+const sectionRef = ref<HTMLDivElement | null>(null);
+
+onMounted(() => {
+  if (sectionRef.value) {
+    gsap.fromTo(
+      sectionRef.value.children[0],
+      { y: 0, opacity: 0 },
+      {
+        opacity: 1,
+        delay: 0.1,
+        duration: 0.4,
+        scrollTrigger: {
+          trigger: sectionRef.value,
+          scrub: 1.2,
+          start: "center 85%",
+          end: "center 20%",
+        },
+      }
+    );
+
+    gsap.from(sectionRef.value.children[1].children, {
+      opacity: 0,
+      y: 100,
+      // stagger: 0.5,
+      duration: 0.5,
+      ease: "power3.inOut",
+      scrollTrigger: {
+        trigger: sectionRef.value,
+        scrub: true,
+        start: "top 85%",
+        end: "  top 40%",
+      },
+    });
+  }
+});
+</script>
 
 <style scoped lang="scss">
 .joinUsSection {
@@ -70,6 +109,8 @@
       line-height: 1.688rem;
       max-width: 50rem;
       text-align: center;
+      max-height: max-content;
+      overflow: hidden;
     }
 
     &--button {
