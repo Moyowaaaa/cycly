@@ -6,7 +6,7 @@
         <h1>WISH-LIST</h1>
       </div>
     </div>
-    <LazyWishlistEmptyState v-if="wishlist.length === 0" />
+    <WishlistEmptyState v-if="wishlist.length === 0" />
     <div class="wishlistPage__container" v-else>
       <div class="wishlistPage__container--product-section">
         <BikeCard
