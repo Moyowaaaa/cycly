@@ -83,5 +83,36 @@ const collections = ref<collectionType[]>([
       gap: 2rem;
     }
   }
+
+  @media screen and (max-width: 500px) {
+    padding: 4rem 0;
+    // border: 2px solid blue;
+
+    &__container {
+      padding: 0;
+
+      &--title-section {
+        font-size: 2.5rem;
+        line-height: 2.5rem;
+        max-width: 100%;
+        text-align: center;
+      }
+
+      &--card-section {
+        gap: 1rem;
+        grid-template-columns: repeat(1, 1fr);
+      }
+    }
+  }
+  @media screen and (min-width: 767px) and (max-width: 991px) {
+    padding: 1rem 0;
+
+    &__container {
+      &--card-section {
+        gap: 1rem;
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+  }
 }
 </style>

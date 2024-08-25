@@ -16,7 +16,7 @@
       </div>
     </div>
 
-    <LazyMarqueeComponent />
+    <!-- <LazyMarqueeComponent /> -->
   </div>
 </template>
 
@@ -122,6 +122,9 @@ onMounted(() => {
   position: relative;
   background: linear-gradient(0deg, #151515 0%, #202020 50%, #151515 100%);
 
+  @media screen and (max-width: 500px) {
+    padding: 2rem 0 2rem;
+  }
   @media screen and (min-width: 1020px) and (max-width: 1920px) {
     padding: 4rem 0 15rem;
 
@@ -131,6 +134,14 @@ onMounted(() => {
   h1 {
     width: max-content;
     font-size: 8rem;
+    @media screen and (max-width: 500px) {
+      font-size: 2rem;
+      line-height: 2rem;
+      text-align: center;
+      width: 100%;
+      font-weight: bold;
+    }
+
     @media screen and (min-width: 1020px) {
       font-size: calc(100vw / 200 * 16);
       line-height: calc(100vw / 220 * 16);
@@ -158,6 +169,10 @@ onMounted(() => {
       height: 40rem;
       position: absolute;
       bottom: 0;
+
+      @media screen and (max-width: 500px) {
+        display: none;
+      }
       @media screen and (min-width: 1020px) and (max-width: 1920px) {
         height: 35rem;
         width: 50rem;

@@ -332,4 +332,12 @@ useHead({
   font-size: 0.875rem;
   font-family: sans-regular;
 }
+
+@media screen and (max-width: 500px) {
+  .cartPage {
+    &__banner {
+      height: 18rem;
+    }
+  }
+}
 </style>

@@ -156,4 +156,28 @@
   transform: scale3d(0, 1, 1);
   transform-origin: 0% 50%;
 }
+
+@media screen and (max-width: 500px) {
+  .wishlistEmptyState {
+    padding: 0rem;
+    height: 30rem;
+
+    &__image-container {
+      top: 10rem;
+      position: absolute;
+    }
+  }
+}
+
+@media screen and (min-width: 767px) and (max-width: 991px) {
+  .wishlistEmptyState {
+    padding: 0rem;
+    height: 30rem;
+
+    &__image-container {
+      top: 10rem;
+      position: absolute;
+    }
+  }
+}
 </style>

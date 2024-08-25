@@ -191,4 +191,21 @@ onMounted(() => {
   transform: scale3d(0, 1, 1);
   transform-origin: 0% 50%;
 }
+
+@media screen and (max-width: 500px) {
+  .joinUsSection {
+    width: 100%;
+    min-height: max-content;
+    max-height: max-content;
+    height: max-content;
+
+    &__container {
+      padding: 4rem 1rem;
+
+      h1 {
+        text-align: center;
+      }
+    }
+  }
+}
 </style>

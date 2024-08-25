@@ -196,6 +196,10 @@ useHead({
     gap: 2rem;
     padding-bottom: 10rem;
 
+    @media screen and (max-width: 500px) {
+      padding: 2rem;
+    }
+
     &--filter-section {
       min-width: 20rem;
       position: relative;
@@ -204,8 +208,16 @@ useHead({
       gap: 4rem;
       height: max-content;
 
+      @media screen and (max-width: 500px) {
+        display: none;
+      }
+
+      @media screen and (min-width: 767px) and (max-width: 991px) {
+        display: none;
+      }
+
       @media (min-width: 900px) and (max-width: 1300px) {
-        border: 2px solid red;
+        // border: 2px solid red;
         min-width: 11rem;
       }
 
@@ -225,6 +237,10 @@ useHead({
         cursor: pointer;
         width: max-content;
 
+        @media screen and (min-width: 767px) and (max-width: 991px) {
+          flex-direction: row;
+        }
+
         .active {
           font-weight: 700;
         }
@@ -236,6 +252,14 @@ useHead({
       width: 100%;
       grid-template-columns: repeat(3, 1fr);
       gap: 2rem;
+
+      @media screen and (max-width: 500px) {
+        grid-template-columns: repeat(1, 1fr);
+      }
+
+      @media screen and (min-width: 767px) and (max-width: 991px) {
+        grid-template-columns: repeat(2, 1fr);
+      }
     }
   }
 }
@@ -255,8 +279,28 @@ useHead({
   .shopPage {
     &__bikes-container {
       max-width: 150rem;
-      border: 2px solid blue;
+      // border: 2px solid blue;
       padding: 2rem;
+    }
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .Page {
+    position: relative;
+    min-height: max-content;
+  }
+
+  .shopPage {
+    &__banner {
+      width: 100%;
+      height: 15rem;
+
+      &--text-container {
+        h1 {
+          font-size: 2.5rem;
+        }
+      }
     }
   }
 }

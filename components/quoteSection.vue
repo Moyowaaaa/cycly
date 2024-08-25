@@ -165,10 +165,29 @@ onMounted(() => {
     right: 0;
     top: 0;
 
+    @media screen and (max-width: 500px) {
+      display: none;
+    }
+
     img {
       width: 100%;
       height: 100%;
       object-fit: cover;
+    }
+
+    @media screen and (min-width: 767px) and (max-width: 991px) {
+      display: none;
+    }
+  }
+
+  @media screen and (max-width: 500px) {
+    &__container {
+      padding: 0 2rem;
+    }
+  }
+  @media screen and (min-width: 767px) and (max-width: 991px) {
+    &__container {
+      padding: 0 2rem;
     }
   }
 }
