@@ -13,9 +13,9 @@ html {
   margin: 0;
   overscroll-behavior: none;
 
-  // @media screen and (min-width: 1024px) {
-  //   font-size: calc(100vw / 1440 * 14);
-  // }
+  @media screen and (min-width: 1024px) and (max-width: 1320px) {
+    font-size: calc(100vw / 1440 * 14);
+  }
 }
 
 body {

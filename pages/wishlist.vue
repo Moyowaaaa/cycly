@@ -113,6 +113,10 @@ useHead({
         font-family: sans-bold;
         font-size: 5rem;
         color: white;
+
+        @media screen and (max-width: 500px) {
+          font-size: 2.5rem;
+        }
       }
     }
   }
@@ -127,12 +131,35 @@ useHead({
     flex-direction: column;
     min-height: 100vh;
 
+    @media screen and (max-width: 500px) {
+      padding: 2rem;
+    }
+
+    @media screen and (min-width: 767px) and (max-width: 991px) {
+    }
+
     &--product-section {
       width: 100%;
       display: grid;
       width: 100%;
       grid-template-columns: repeat(4, 1fr);
       gap: 3rem;
+
+      @media screen and (max-width: 500px) {
+        grid-template-columns: repeat(1, 1fr);
+      }
+
+      @media screen and (min-width: 767px) and (max-width: 991px) {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .wishlistPage {
+    &__banner {
+      height: 18rem;
     }
   }
 }

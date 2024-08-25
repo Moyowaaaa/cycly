@@ -43,6 +43,7 @@ const tl: any = inject("timeline");
 
 onMounted(() => {
   if (titleSectionRef.value && buttonContainerRef.value) {
+    gsap.set(titleSectionRef.value.children[1], { scale: 1 });
     tl.fromTo(
       [titleSectionRef.value.children[0].children[0].children[0]],
       {
@@ -126,6 +127,7 @@ onMounted(() => {
 
     gsap.to(titleSectionRef.value.children[0].children[1].children, {
       y: -100,
+
       duration: 1.2,
       delay: 2,
       ease: "power3.inOut",
@@ -136,6 +138,27 @@ onMounted(() => {
         // end: "  top 70%",
       },
     });
+    gsap.fromTo(
+      titleSectionRef.value.children[1],
+      {
+        scale: 1.08,
+        ease: "power3.inOut",
+      },
+      {
+        // y: -100,
+        scale: 1,
+
+        duration: 1.2,
+        // delay: 2,
+        ease: "power3.inOut",
+        scrollTrigger: {
+          trigger: titleSectionRef.value.children[1],
+          scrub: 2,
+          start: "80% 100%",
+          // end: "  top 70%",
+        },
+      }
+    );
   }
 });
 </script>
@@ -248,6 +271,30 @@ onMounted(() => {
         opacity: 0;
       }
     }
+
+    @media screen and (max-width: 500px) {
+      padding: 1rem;
+      flex-direction: column;
+      justify-content: center;
+      gap: 2rem;
+      &--left-column,
+      &--right-column {
+        width: 100%;
+        text-align: center;
+      }
+    }
+
+    @media screen and (min-width: 767px) and (max-width: 991px) {
+      padding: 1rem 2rem;
+      flex-direction: column;
+      justify-content: center;
+      &--left-column,
+      &--right-column {
+        width: 80%;
+        text-align: center;
+        text-align: left;
+      }
+    }
   }
 }
 
@@ -307,5 +354,11 @@ onMounted(() => {
 .title-section__container--left-column__button:hover::before {
   transform: scale3d(0, 1, 1);
   transform-origin: 0% 50%;
+}
+
+@media screen and (max-width: 500px) {
+  #button-container {
+    display: none;
+  }
 }
 </style>

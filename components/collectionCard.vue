@@ -90,6 +90,14 @@ onMounted(() => {
   justify-content: space-between;
   min-width: 20rem;
 
+  @media screen and (max-width: 500px) {
+    min-height: 50vh;
+    max-height: 50vh;
+    max-width: 90%;
+    min-width: 90%;
+    margin: 0 auto;
+  }
+
   @media (min-width: 900px) and (max-width: 1250px) {
     min-width: 15rem;
   }

@@ -36,13 +36,13 @@
             </button>
           </nuxt-link>
 
-          <div
+          <!-- <div
             class="footer__container--content-container__links-container--links"
           >
             <p>Instagram</p>
             <p>Facebook</p>
             <p>Twitter</p>
-          </div>
+          </div> -->
         </div>
 
         <div class="footer__container--content-container__heroText">
@@ -69,7 +69,7 @@
             &copy;&nbsp;Cycle&nbsp; <span>{{ year }}</span>
           </div>
 
-          <div style="visibility: hidden">ooo00000</div>
+          <div>Designooasis</div>
         </div>
       </div>
     </div>
@@ -99,6 +99,9 @@ onMounted(() => {
   const image = document.querySelector(
     ".footer__container--image-container__image-content img"
   ) as Element;
+  const footerTexts = document.querySelector(
+    ".footer__container--bottom-section"
+  ) as Element;
 
   console.log({ largeText });
 
@@ -120,6 +123,31 @@ onMounted(() => {
             { yPercent: 10, opacity: 0 },
             {
               duration: 1.2,
+              yPercent: 0,
+              opacity: 1,
+              delay: 0.2,
+              ease: "power4.inOut",
+            }
+          );
+        } else {
+          gsap.to(image, { opacity: 0, duration: 0.8 });
+        }
+      }
+    );
+  }
+
+  if (footerTexts) {
+    cleanup = intersectionObserver(
+      footerTexts,
+      { threshold: 0.02 },
+      (isIntersecting) => {
+        if (isIntersecting) {
+          gsap.fromTo(
+            footerTexts.children,
+            { yPercent: 10, opacity: 0 },
+            {
+              duration: 1.2,
+              stagger: 0.2,
               yPercent: 0,
               opacity: 1,
               delay: 0.2,
@@ -191,8 +219,8 @@ const onGoHome = () => {
 
   &__container {
     position: fixed;
-    height: 100vh;
-
+    min-height: 100vh;
+    height: max-content;
     bottom: 0;
     width: 100%;
 
@@ -274,6 +302,24 @@ const onGoHome = () => {
         text-align: center;
         color: #d9d9d9;
       }
+
+      @media screen and (max-width: 500px) {
+        &__heroText {
+          font-size: 2.5rem;
+          line-height: 2.5rem;
+        }
+
+        &__text-container {
+          max-width: 100%;
+        }
+      }
+
+      @media screen and (min-width: 767px) and (max-width: 991px) {
+        &__heroText {
+          font-size: 5rem;
+          line-height: 5rem;
+        }
+      }
     }
     &--image-container {
       width: 100%;
@@ -319,6 +365,14 @@ const onGoHome = () => {
 
       &__copy-container {
         align-self: center;
+      }
+
+      @media screen and (max-width: 500px) {
+        padding: 1rem;
+
+        &__copy-container {
+          align-self: flex-end;
+        }
       }
     }
   }
@@ -392,5 +446,17 @@ const onGoHome = () => {
   display: flex;
   align-items: center;
   gap: 0.3rem;
+}
+
+@media screen and (max-width: 500px) {
+  .footer {
+    min-height: 100vh;
+
+    &__container {
+      &--content-container {
+        padding: 1rem;
+      }
+    }
+  }
 }
 </style>
