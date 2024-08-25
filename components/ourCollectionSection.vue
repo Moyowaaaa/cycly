@@ -6,7 +6,7 @@
       </div>
 
       <div class="ourCollection__container--card-section">
-        <LazyCollectionCard
+        <CollectionCard
           v-for="(collection, index) in collections"
           :key="index"
           :title="collection.title"
