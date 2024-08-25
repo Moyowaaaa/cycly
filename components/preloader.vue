@@ -166,6 +166,10 @@ watchEffect(() => {
     align-items: center;
     justify-content: center;
 
+    @media screen and (max-width: 500px) {
+      padding: 1rem;
+    }
+
     &--counter-container {
       width: max-content;
       position: absolute;
@@ -188,11 +192,19 @@ watchEffect(() => {
       justify-content: center;
       line-height: 5rem;
 
+      @media screen and (max-width: 500px) {
+        line-height: 2rem;
+      }
+
       h1 {
         font-family: sans-medium;
         opacity: 0;
         color: white;
         font-size: 2rem;
+
+        @media screen and (max-width: 500px) {
+          font-size: 1.5rem;
+        }
       }
     }
   }
