@@ -1,10 +1,10 @@
 <template>
   <div class="homePage">
     <TitleSection />
-    <LazyOurCollectionSection />
-    <LazyShowcaseSection />
-    <LazyQuoteSection />
-    <LazyJoinUsSection />
+    <OurCollectionSection />
+    <ShowcaseSection />
+    <QuoteSection />
+    <JoinUsSection />
   </div>
 </template>
 
