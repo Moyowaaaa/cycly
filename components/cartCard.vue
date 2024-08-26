@@ -56,6 +56,10 @@ const props = defineProps(["cartItem"]);
     align-items: end;
     gap: 2rem;
 
+    @media screen and (max-width: 991px) {
+      flex-direction: column;
+    }
+
     img {
       max-width: 14rem;
       min-width: 14rem;
@@ -63,6 +67,13 @@ const props = defineProps(["cartItem"]);
       border-radius: 5px;
       min-height: 8rem;
       max-height: 8rem;
+
+      @media screen and (max-width: 991px) {
+        max-width: 100%;
+        min-width: 100%;
+        min-height: 15rem;
+        max-height: 15rem;
+      }
     }
 
     &--details-section {

@@ -16,7 +16,7 @@
       </div>
     </div>
 
-    <!-- <LazyMarqueeComponent /> -->
+    <MarqueeComponent />
   </div>
 </template>
 
@@ -25,85 +25,89 @@ import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
 gsap.registerPlugin(ScrollTrigger);
 
+let mm = gsap.matchMedia();
+
 onMounted(() => {
-  const tl = gsap.timeline({
-    scrollTrigger: {
-      trigger: ".topSection",
-      start: "top 85%",
-      end: "top 20%",
-      // pin: [".testSection"],
-      // markers: true,
-      scrub: 3,
-      toggleActions: "none pause none none",
-    },
-  });
-  tl.fromTo(
-    ".text",
-    {
-      xPercent: 100,
-      ease: "power3.inOut",
-      opacity: 0,
-    },
-    {
-      xPercent: 5,
-      duration: 10,
-      ease: "power3.inOut",
-      opacity: 1,
-    }
-  )
-    .fromTo(
-      ".text2",
-      {
-        xPercent: -100,
-        ease: "power3.inOut",
-        opacity: 0,
+  mm.add("(min-width: 800px)", () => {
+    const tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: ".topSection",
+        start: "top 85%",
+        end: "top 20%",
+        // pin: [".testSection"],
+        // markers: true,
+        scrub: 3,
+        toggleActions: "none pause none none",
       },
-      {
-        xPercent: 40,
-        duration: 10,
-        ease: "power3.inOut",
-        opacity: 1,
-      },
-      "-=10"
-    )
-    .fromTo(
-      ".text3",
+    });
+    tl.fromTo(
+      ".text",
       {
         xPercent: 100,
         ease: "power3.inOut",
         opacity: 0,
       },
       {
-        xPercent: 8,
-        duration: 10,
-        ease: "power3.inOut",
-        textAlign: "center",
-        opacity: 1,
-      },
-      "-=10"
-    )
-    .fromTo(
-      ".text4",
-      {
-        xPercent: -100,
-        ease: "power3.inOut",
-        opacity: 0,
-      },
-      {
-        xPercent: 0,
+        xPercent: 5,
         duration: 10,
         ease: "power3.inOut",
         opacity: 1,
-      },
-      "-=10"
+      }
     )
-    .from("#image-container-image", {
-      yPercent: 100,
-      duration: 5,
-      opacity: 1,
-      ease: "power3.inOut",
-      delay: 2,
-    });
+      .fromTo(
+        ".text2",
+        {
+          xPercent: -100,
+          ease: "power3.inOut",
+          opacity: 0,
+        },
+        {
+          xPercent: 40,
+          duration: 10,
+          ease: "power3.inOut",
+          opacity: 1,
+        },
+        "-=10"
+      )
+      .fromTo(
+        ".text3",
+        {
+          xPercent: 100,
+          ease: "power3.inOut",
+          opacity: 0,
+        },
+        {
+          xPercent: 8,
+          duration: 10,
+          ease: "power3.inOut",
+          textAlign: "center",
+          opacity: 1,
+        },
+        "-=10"
+      )
+      .fromTo(
+        ".text4",
+        {
+          xPercent: -100,
+          ease: "power3.inOut",
+          opacity: 0,
+        },
+        {
+          xPercent: 0,
+          duration: 10,
+          ease: "power3.inOut",
+          opacity: 1,
+        },
+        "-=10"
+      )
+      .from("#image-container-image", {
+        yPercent: 100,
+        duration: 5,
+        opacity: 1,
+        ease: "power3.inOut",
+        delay: 2,
+      });
+  });
 });
 </script>
 

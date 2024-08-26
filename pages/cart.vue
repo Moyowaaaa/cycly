@@ -211,11 +211,19 @@ useHead({
     gap: 2rem;
     padding-bottom: 10rem;
 
+    @media screen and (max-width: 500px) {
+      padding: 2rem;
+    }
+
     &--step-count-container {
       display: flex;
       align-items: center;
       justify-content: center;
       gap: 1rem;
+
+      @media screen and (max-width: 500px) {
+        display: none;
+      }
       div {
         display: flex;
         align-items: center;
@@ -251,6 +259,9 @@ useHead({
       gap: 1rem;
       padding-top: 2rem;
       justify-content: space-between;
+      @media screen and (max-width: 991px) {
+        flex-direction: column;
+      }
 
       &__brief-section {
         height: max-content;
@@ -262,6 +273,10 @@ useHead({
         padding: 2rem;
         border-radius: 5px;
         gap: 2rem;
+
+        @media screen and (max-width: 991px) {
+          width: 100%;
+        }
 
         h1 {
           font-size: 1.25rem;
@@ -311,6 +326,10 @@ useHead({
         padding: 2rem 0;
         position: relative;
         box-sizing: border-box;
+
+        @media screen and (max-width: 991px) {
+          width: 100%;
+        }
 
         &--product-section {
           display: flex;
