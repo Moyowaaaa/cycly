@@ -35,6 +35,7 @@
 
 <script setup lang="ts">
 import gsap from "gsap";
+
 const sectionRef = ref<HTMLDivElement | null>(null);
 
 onMounted(() => {
@@ -82,6 +83,7 @@ onMounted(() => {
   background-size: cover;
   background-repeat: no-repeat;
   background-attachment: fixed;
+  background-position-x: -2px;
 
   &__container {
     display: flex;

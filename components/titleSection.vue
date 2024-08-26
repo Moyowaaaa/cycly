@@ -40,6 +40,7 @@ import gsap from "gsap";
 const titleSectionRef = ref<HTMLDivElement | null>(null);
 const buttonContainerRef = ref<HTMLDivElement | null>(null);
 const tl: any = inject("timeline");
+let mm = gsap.matchMedia();
 
 onMounted(() => {
   if (titleSectionRef.value && buttonContainerRef.value) {
@@ -87,78 +88,81 @@ onMounted(() => {
       delay: 1.2,
       ease: "power3.inOut",
     });
+    mm.add("(min-width: 767px)", () => {
+      if (titleSectionRef.value && buttonContainerRef.value) {
+        gsap.fromTo(
+          titleSectionRef.value.children[0].children[0].children[0],
+          {
+            scale: 1.05,
+            opacity: 2,
+          },
+          {
+            opacity: 0,
+            y: 0,
+            scale: 1,
+            delay: 1.2,
+            ease: "power3.inOut",
+            scrollTrigger: {
+              trigger: titleSectionRef.value.children[0].children[0].children,
+              scrub: -1,
 
-    gsap.fromTo(
-      titleSectionRef.value.children[0].children[0].children[0],
-      {
-        scale: 1.05,
-        opacity: 2,
-      },
-      {
-        opacity: 0,
-        y: 0,
-        scale: 1,
-        delay: 1.2,
-        ease: "power3.inOut",
-        scrollTrigger: {
-          trigger: titleSectionRef.value.children[0].children[0].children,
-          scrub: -1,
+              start: "99% 100%",
+              // end: "  top 70%",
+            },
+          }
+        );
 
-          start: "99% 100%",
-          // end: "  top 70%",
-        },
+        gsap.to(buttonContainerRef.value.children[0].children, {
+          y: -100,
+          duration: 1.2,
+          delay: 2,
+          marginTop: "40px",
+          ease: "power3.inOut",
+          scrollTrigger: {
+            trigger: buttonContainerRef.value.children[0],
+            scrub: -1,
+
+            start: "95% 100%",
+            // end: "  top 70%",
+          },
+        });
+
+        gsap.to(titleSectionRef.value.children[0].children[1].children, {
+          y: -100,
+
+          duration: 1.2,
+          delay: 2,
+          ease: "power3.inOut",
+          scrollTrigger: {
+            trigger: titleSectionRef.value.children[0].children[1].children,
+            scrub: 1.5,
+            start: "80% 100%",
+            // end: "  top 70%",
+          },
+        });
+        gsap.fromTo(
+          titleSectionRef.value.children[1],
+          {
+            scale: 1.08,
+            ease: "power3.inOut",
+          },
+          {
+            // y: -100,
+            scale: 1,
+
+            duration: 1.2,
+            // delay: 2,
+            ease: "power3.inOut",
+            scrollTrigger: {
+              trigger: titleSectionRef.value.children[1],
+              scrub: 2,
+              start: "80% 100%",
+              // end: "  top 70%",
+            },
+          }
+        );
       }
-    );
-
-    gsap.to(buttonContainerRef.value.children[0].children, {
-      y: -100,
-      duration: 1.2,
-      delay: 2,
-      marginTop: "40px",
-      ease: "power3.inOut",
-      scrollTrigger: {
-        trigger: buttonContainerRef.value.children[0],
-        scrub: -1,
-
-        start: "95% 100%",
-        // end: "  top 70%",
-      },
     });
-
-    gsap.to(titleSectionRef.value.children[0].children[1].children, {
-      y: -100,
-
-      duration: 1.2,
-      delay: 2,
-      ease: "power3.inOut",
-      scrollTrigger: {
-        trigger: titleSectionRef.value.children[0].children[1].children,
-        scrub: 1.5,
-        start: "80% 100%",
-        // end: "  top 70%",
-      },
-    });
-    gsap.fromTo(
-      titleSectionRef.value.children[1],
-      {
-        scale: 1.08,
-        ease: "power3.inOut",
-      },
-      {
-        // y: -100,
-        scale: 1,
-
-        duration: 1.2,
-        // delay: 2,
-        ease: "power3.inOut",
-        scrollTrigger: {
-          trigger: titleSectionRef.value.children[1],
-          scrub: 2,
-          start: "80% 100%",
-          // end: "  top 70%",
-        },
-      }
-    );
   }
 });
 </script>
@@ -179,6 +183,10 @@ onMounted(() => {
   // background-size: cover;
   // background-repeat: no-repeat;
   // background-attachment: fixed;
+  @media screen and (max-width: 991px) {
+    max-width: 100vw;
+    overflow-x: hidden;
+  }
 
   img {
     height: 100vh;
@@ -188,6 +196,13 @@ onMounted(() => {
     width: 100%;
     object-fit: cover;
     top: 0;
+    overflow: hidden;
+    max-width: 100vw;
+
+    @media screen and (max-width: 991px) {
+      position: absolute;
+      overflow: hidden;
+    }
   }
 
   &__container {
@@ -358,7 +373,8 @@ onMounted(() => {
 
 @media screen and (max-width: 500px) {
   #button-container {
-    display: none;
+    justify-content: center;
+    width: 100%;
   }
 }
 </style>

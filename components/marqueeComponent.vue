@@ -77,7 +77,8 @@ function horizontalLoop(
     repeat: config.repeat,
     paused: config.paused,
     defaults: { ease: "none" },
-    onReverseComplete: () => tl.totalTime(tl.rawTime() + tl.duration() * 100),
+    onReverseComplete: () =>
+      tl.totalTime(tl.rawTime() + tl.duration() * 100) as any,
   });
 
   const length = items.length;
@@ -241,6 +242,11 @@ onMounted(() => {
     span {
       color: #9747ff;
       font-style: italic;
+    }
+
+    @media screen and (max-width: 500px) {
+      font-size: 2rem;
+      line-height: 2rem;
     }
   }
 
