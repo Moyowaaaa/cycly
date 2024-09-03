@@ -12,6 +12,8 @@
           src="marqueeImage.png"
           alt=""
           id="image-container-image"
+          width="100%"
+          height="100%"
         />
       </div>
     </div>

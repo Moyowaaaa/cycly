@@ -45,17 +45,27 @@ let mm = gsap.matchMedia();
 onMounted(() => {
   if (titleSectionRef.value && buttonContainerRef.value) {
     gsap.set(titleSectionRef.value.children[1], { scale: 1 });
-    tl.fromTo(
-      [titleSectionRef.value.children[0].children[0].children[0]],
-      {
-        opacity: 0,
-      },
-      {
-        opacity: 1.1,
-        scale: 1,
-        // y: 100,
-      }
-    );
+    gsap.set(titleSectionRef.value.children[0].children[0].children[0], {
+      opacity: 0,
+    });
+    // tl.fromTo(
+    //   [titleSectionRef.value.children[0].children[0].children[0]],
+    //   {
+    //     opacity: 0,
+    //   },
+    //   {
+    //     opacity: 1.1,
+    //     scale: 1,
+    //     delay: 0.5,
+    //     // y: 100,
+    //   }
+    // );
+
+    tl.to(titleSectionRef.value.children[0].children[0].children[0], {
+      opacity: 1,
+      // scale: 1,
+      // delay: 0.5,
+    });
 
     console.log(titleSectionRef.value.children[0].children[0].children[0]);
 
@@ -90,27 +100,27 @@ onMounted(() => {
     });
     mm.add("(min-width: 767px)", () => {
       if (titleSectionRef.value && buttonContainerRef.value) {
-        gsap.fromTo(
-          titleSectionRef.value.children[0].children[0].children[0],
-          {
-            scale: 1.05,
-            opacity: 2,
-          },
-          {
-            opacity: 0,
-            y: 0,
-            scale: 1,
-            delay: 1.2,
-            ease: "power3.inOut",
-            scrollTrigger: {
-              trigger: titleSectionRef.value.children[0].children[0].children,
-              scrub: -1,
+        // gsap.fromTo(
+        //   titleSectionRef.value.children[0].children[0].children[0],
+        //   {
+        //     scale: 1.05,
+        //     opacity: 0,
+        //   },
+        //   {
+        //     opacity: 0,
+        //     y: 0,
+        //     scale: 1,
+        //     delay: 1.2,
+        //     ease: "power3.inOut",
+        //     scrollTrigger: {
+        //       trigger: titleSectionRef.value.children[0].children[0].children,
+        //       scrub: -1,
 
-              start: "99% 100%",
-              // end: "  top 70%",
-            },
-          }
-        );
+        //       start: "99% 100%",
+        //       // end: "  top 70%",
+        //     },
+        //   }
+        // );
 
         gsap.to(buttonContainerRef.value.children[0].children, {
           y: -100,

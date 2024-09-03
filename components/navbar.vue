@@ -2,7 +2,13 @@
   <div class="navbar" :class="{ whiteNav: !isHomeRoute }">
     <div class="navbar__container" ref="navbarRef">
       <div class="navbar__container--logo-container" @click="onGoHome">
-        <nuxt-img loading="lazy" src="logo.png" alt="logo" />
+        <nuxt-img
+          loading="lazy"
+          src="logo.png"
+          alt="logo"
+          width="100%"
+          height="100%"
+        />
       </div>
 
       <div class="navbar__container--links-container">
@@ -135,10 +141,8 @@ const scrollUp = (where: string) => {
 watchEffect(() => {
   if (route.name === "index") {
     isHomeRoute.value = true;
-    console.log(route.name);
   } else {
     isHomeRoute.value = false;
-    console.log(route.name);
   }
 });
 

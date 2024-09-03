@@ -1,7 +1,13 @@
 <template>
   <div class="Page">
     <div class="cartPage__banner">
-      <nuxt-img loading="lazy" src="cartImage.png" alt="" />
+      <nuxt-img
+        loading="lazy"
+        src="cartImage.png"
+        alt=""
+        width="100%"
+        height="100%"
+      />
       <div class="cartPage__banner--text-container">
         <h1>CART</h1>
       </div>

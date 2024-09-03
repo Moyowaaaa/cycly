@@ -6,7 +6,13 @@
           class="footer__container--content-container__logo-container"
           @click="onGoHome"
         >
-          <nuxt-img loading="lazy" src="whiteLogo.png" alt="logo" />
+          <nuxt-img
+            loading="lazy"
+            src="whiteLogo.png"
+            alt="logo"
+            width="100%"
+            height="100%"
+          />
         </div>
 
         <div class="footer__container--content-container__text-container">
@@ -53,7 +59,13 @@
       </div>
       <div class="footer__container--image-container">
         <div class="footer__container--image-container__image-content">
-          <nuxt-img loading="lazy" src="cityBike.png" alt="" />
+          <nuxt-img
+            loading="lazy"
+            src="cityBike.png"
+            alt=""
+            width="100%"
+            height="100%"
+          />
         </div>
         <div class="footer__container--bottom-section">
           <div class="credits">
