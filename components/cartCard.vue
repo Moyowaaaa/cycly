@@ -1,7 +1,13 @@
 <template>
   <div class="cartCard">
     <div class="cartCard__product-section">
-      <nuxt-img :src="cartItem.imageName" alt="" loading="lazy" />
+      <nuxt-img
+        :src="cartItem.imageName"
+        alt=""
+        loading="lazy"
+        width="100%"
+        height="100%"
+      />
       <div class="cartCard__product-section--details-section">
         <div class="cartCard__product-section--details-section__name-section">
           <h1>{{ cartItem.name }}</h1>
@@ -26,7 +32,13 @@
       class="cartCard__remove-section"
       @click="CartStore.removeItemFromCart(cartItem.slug)"
     >
-      <nuxt-img loading="lazy" src="trashIcon.svg" alt="" />
+      <nuxt-img
+        loading="lazy"
+        src="trashIcon.svg"
+        alt=""
+        width="100%"
+        height="100%"
+      />
       <h1>Remove</h1>
     </div>
   </div>

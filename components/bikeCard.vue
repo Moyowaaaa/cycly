@@ -5,6 +5,8 @@
         loading="lazy"
         :src="bicycle.imageName"
         :alt="`${bicycle.name} Image`"
+        width="100%"
+        height="100%"
       />
     </div>
     <div class="bikeCard__details-container">

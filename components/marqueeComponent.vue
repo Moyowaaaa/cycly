@@ -11,7 +11,13 @@
           v-for="(showcaseImage, index) in showcaseImages"
           :key="index"
         >
-          <nuxt-img loading="lazy" :src="showcaseImage" alt="" />
+          <nuxt-img
+            loading="lazy"
+            :src="showcaseImage"
+            alt=""
+            width="100%"
+            height="100%"
+          />
         </div>
       </div>
     </div>

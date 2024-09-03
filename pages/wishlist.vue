@@ -1,7 +1,13 @@
 <template>
   <div class="wishlistPage">
     <div class="wishlistPage__banner">
-      <nuxt-img loading="lazy" src="mountainBikes" alt="" />
+      <nuxt-img
+        loading="lazy"
+        src="mountainBikes"
+        alt=""
+        width="100%"
+        height="100%"
+      />
       <div class="wishlistPage__banner--text-container">
         <h1>WISH-LIST</h1>
       </div>

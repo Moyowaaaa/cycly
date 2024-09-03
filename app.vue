@@ -16,20 +16,13 @@ import usePreloadImagesStore from "~/stores/ImagesPreloader";
 
 // Initialize store
 const imagesStore = usePreloadImagesStore();
-const { percentageOfLoadedImages, imagesHaveLoaded } = storeToRefs(imagesStore);
+const { imagesHaveLoaded } = storeToRefs(imagesStore);
 
 onMounted(() => {
   new Interactions();
   if (!imagesHaveLoaded.value) {
     loadAssets();
   }
-});
-
-watchEffect(() => {
-  console.log(
-    Math.round(percentageOfLoadedImages.value),
-    imagesHaveLoaded.value
-  );
 });
 </script>
 

@@ -1,7 +1,13 @@
 <template>
   <div class="Page">
     <div class="shopPage__banner">
-      <nuxt-img loading="lazy" :src="filteredBackgrounds" alt="" />
+      <nuxt-img
+        loading="lazy"
+        :src="filteredBackgrounds"
+        alt=""
+        width="100%"
+        height="100%"
+      />
 
       <div class="shopPage__banner--text-container">
         <h1 v-if="selectedBikeType">{{ selectedBikeType }}</h1>
