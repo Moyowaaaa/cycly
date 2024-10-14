@@ -102,106 +102,103 @@ const isImageVisible = ref(false);
 let cleanup: (() => void) | null = null;
 
 onMounted(() => {
-  const largeTextContainer = document.querySelector(
-    ".footer__container--content-container__heroText"
-  );
-  const largeText = document.querySelector(
-    ".footer__container--content-container__heroText--text"
-  );
-  const image = document.querySelector(
-    ".footer__container--image-container__image-content img"
-  ) as Element;
-  const footerTexts = document.querySelector(
-    ".footer__container--bottom-section"
-  ) as Element;
+  if (process.client) {
+    // Run only in the browser environment
 
-  console.log({ largeText });
-
-  const result = Splitting({ target: largeText, by: "chars" });
-  console.log({ result });
-
-  const date = new Date();
-  year.value = date.getFullYear();
-
-  if (image) {
-    cleanup = intersectionObserver(
-      image,
-      { threshold: 0.02 },
-      (isIntersecting) => {
-        isImageVisible.value = isIntersecting;
-        if (isIntersecting) {
-          gsap.fromTo(
-            image,
-            { yPercent: 10, opacity: 0 },
-            {
-              duration: 1.2,
-              yPercent: 0,
-              opacity: 1,
-              delay: 0.2,
-              ease: "power4.inOut",
-            }
-          );
-        } else {
-          gsap.to(image, { opacity: 0, duration: 0.8 });
-        }
-      }
+    const largeTextContainer = document.querySelector(
+      ".footer__container--content-container__heroText"
     );
-  }
-
-  if (footerTexts) {
-    cleanup = intersectionObserver(
-      footerTexts,
-      { threshold: 0.02 },
-      (isIntersecting) => {
-        if (isIntersecting) {
-          gsap.fromTo(
-            footerTexts.children,
-            { yPercent: 10, opacity: 0 },
-            {
-              duration: 1.2,
-              stagger: 0.2,
-              yPercent: 0,
-              opacity: 1,
-              delay: 0.2,
-              ease: "power4.inOut",
-            }
-          );
-        } else {
-          gsap.to(image, { opacity: 0, duration: 0.8 });
-        }
-      }
+    const largeText = document.querySelector(
+      ".footer__container--content-container__heroText--text"
     );
-  }
+    const image = document.querySelector(
+      ".footer__container--image-container__image-content img"
+    ) as Element;
+    const footerTexts = document.querySelector(
+      ".footer__container--bottom-section"
+    ) as Element;
 
-  if (largeTextContainer) {
-    console.log(result);
+    const result = Splitting({ target: largeText, by: "chars" });
 
-    result[0].chars.forEach((a: any) => console.log(a));
-    cleanup = intersectionObserver(
-      largeTextContainer,
-      { threshold: 0.2 },
-      (isIntersecting) => {
-        if (isIntersecting) {
-          result[0].chars.forEach((a: gsap.TweenTarget, i: number) => {
-            gsap.to(a, {
-              opacity: 1, // Animate to full opacity
-              // duration: gsap.utils.random(0.1, 0.3), // Random duration for the effect
-              duration: 0.2,
-              ease: "power3.inOut",
-              delay: i * gsap.utils.random(0.1, 0.2), // Random delay for staggered effect
+    const date = new Date();
+    year.value = date.getFullYear();
+
+    if (image) {
+      cleanup = intersectionObserver(
+        image,
+        { threshold: 0.02 },
+        (isIntersecting) => {
+          isImageVisible.value = isIntersecting;
+          if (isIntersecting) {
+            gsap.fromTo(
+              image,
+              { yPercent: 10, opacity: 0 },
+              {
+                duration: 1.2,
+                yPercent: 0,
+                opacity: 1,
+                delay: 0.2,
+                ease: "power4.inOut",
+              }
+            );
+          } else {
+            gsap.to(image, { opacity: 0, duration: 0.8 });
+          }
+        }
+      );
+    }
+
+    if (footerTexts) {
+      cleanup = intersectionObserver(
+        footerTexts,
+        { threshold: 0.02 },
+        (isIntersecting) => {
+          if (isIntersecting) {
+            gsap.fromTo(
+              footerTexts.children,
+              { yPercent: 10, opacity: 0 },
+              {
+                duration: 1.2,
+                stagger: 0.2,
+                yPercent: 0,
+                opacity: 1,
+                delay: 0.2,
+                ease: "power4.inOut",
+              }
+            );
+          } else {
+            gsap.to(image, { opacity: 0, duration: 0.8 });
+          }
+        }
+      );
+    }
+
+    if (largeTextContainer) {
+      cleanup = intersectionObserver(
+        largeTextContainer,
+        { threshold: 0.2 },
+        (isIntersecting) => {
+          if (isIntersecting) {
+            result[0].chars.forEach((a: gsap.TweenTarget, i: number) => {
+              gsap.to(a, {
+                opacity: 1, // Animate to full opacity
+                duration: 0.2,
+                ease: "power3.inOut",
+                delay: i * gsap.utils.random(0.1, 0.2), // Random delay for staggered effect
+              });
             });
-          });
-        } else {
-          result[0].chars.forEach((a: gsap.TweenTarget) => {
-            gsap.to(a, {
-              opacity: 0.2, // Animate to full opacity
-              duration: 0.1, // Random duration for the effect
-              ease: "power3.inOut",
+          } else {
+            result[0].chars.forEach((a: gsap.TweenTarget) => {
+              gsap.to(a, {
+                opacity: 0.2, // Animate to full opacity
+                duration: 0.1, // Random duration for the effect
+                ease: "power3.inOut",
+              });
             });
-          });
+          }
         }
-      }
-    );
+      );
+    }
   }
 });
 

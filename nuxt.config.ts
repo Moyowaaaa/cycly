@@ -19,6 +19,19 @@ export default defineNuxtConfig({
   },
   modules: ["@pinia/nuxt", "@nuxt/image"],
   css: ["@/styles/index.scss"],
+
+  hooks: {
+    "build:before": () => {
+      console.log("Service worker setup...");
+    },
+  },
+
+  nitro: {
+    devProxy: {
+      "/sw.js": { target: "/sw.js", ws: false },
+    },
+  },
+
   image: {
     provider: "cloudinary",
     cloudinary: {
@@ -26,4 +39,5 @@ export default defineNuxtConfig({
         "https://res.cloudinary.com/dyap7epew/image/upload/v1722255252/cycly/",
     },
   },
+  ssr: true,
 });

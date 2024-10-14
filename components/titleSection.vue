@@ -48,26 +48,10 @@ onMounted(() => {
     gsap.set(titleSectionRef.value.children[0].children[0].children[0], {
       opacity: 0,
     });
-    // tl.fromTo(
-    //   [titleSectionRef.value.children[0].children[0].children[0]],
-    //   {
-    //     opacity: 0,
-    //   },
-    //   {
-    //     opacity: 1.1,
-    //     scale: 1,
-    //     delay: 0.5,
-    //     // y: 100,
-    //   }
-    // );
 
     tl.to(titleSectionRef.value.children[0].children[0].children[0], {
       opacity: 1,
-      // scale: 1,
-      // delay: 0.5,
     });
-
-    console.log(titleSectionRef.value.children[0].children[0].children[0]);
 
     tl.to(buttonContainerRef.value.children[0].children, {
       opacity: 1,
