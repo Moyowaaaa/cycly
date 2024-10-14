@@ -19,6 +19,20 @@
             height="100%"
           />
         </div>
+
+        <div
+          class="secondSection__container--card"
+          v-for="(showcaseImage, index) in showcaseImages"
+          :key="index"
+        >
+          <nuxt-img
+            loading="lazy"
+            :src="showcaseImage"
+            alt=""
+            width="100%"
+            height="100%"
+          />
+        </div>
       </div>
     </div>
 
@@ -312,6 +326,7 @@ onMounted(() => {
   max-width: 18rem;
   border-radius: 10px;
   margin: 0 1rem;
+
   img {
     height: 100%;
     width: 100%;

@@ -136,7 +136,6 @@ const preloaderTransitionOut = () => {
 };
 
 watchEffect(() => {
-  console.log(percentageOfLoadedImages.value === 100);
   if (percentageOfLoadedImages.value === 100) {
     preloaderTransitionOut();
   }
