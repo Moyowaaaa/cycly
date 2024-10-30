@@ -3,7 +3,7 @@
     <Preloader />
 
     <div :class="{ hidden: !imagesHaveLoaded }">
-      <NuxtLayout v-if="imagesHaveLoaded">
+      <NuxtLayout v-if="loadDone">
         <NuxtPage />
       </NuxtLayout>
     </div>
@@ -18,24 +18,20 @@ import usePreloadImagesStore from "~/stores/ImagesPreloader";
 
 const imagesStore = usePreloadImagesStore();
 const { imagesHaveLoaded } = storeToRefs(imagesStore);
+const loadDone = ref<boolean>(false);
 
 onMounted(() => {
-  new Interactions();
   if (!imagesHaveLoaded.value) {
     loadAssets();
   }
 });
 
-onMounted(() => {
-  if ("serviceWorker" in navigator) {
-    navigator.serviceWorker.register("/sw.js").then(
-      function (registration) {
-        return registration.scope;
-      },
-      function (err) {
-        return err;
-      }
-    );
+watch(imagesHaveLoaded, (newValue) => {
+  if (newValue) {
+    setTimeout(() => {
+      loadDone.value = true;
+      new Interactions();
+    }, 1000);
   }
 });
 </script>

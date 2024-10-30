@@ -219,6 +219,7 @@ const onGoHome = () => {
       max-height: 5rem;
       max-width: 5rem;
       overflow: hidden;
+      cursor: pointer;
 
       img {
         height: 100%;

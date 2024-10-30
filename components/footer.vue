@@ -41,14 +41,6 @@
               </span>
             </button>
           </nuxt-link>
-
-          <!-- <div
-            class="footer__container--content-container__links-container--links"
-          >
-            <p>Instagram</p>
-            <p>Facebook</p>
-            <p>Twitter</p>
-          </div> -->
         </div>
 
         <div class="footer__container--content-container__heroText">
@@ -184,14 +176,14 @@ onMounted(() => {
                 opacity: 1, // Animate to full opacity
                 duration: 0.2,
                 ease: "power3.inOut",
-                delay: i * gsap.utils.random(0.1, 0.2), // Random delay for staggered effect
+                delay: i * gsap.utils.random(0.1, 0.2),
               });
             });
           } else {
             result[0].chars.forEach((a: gsap.TweenTarget) => {
               gsap.to(a, {
-                opacity: 0.2, // Animate to full opacity
-                duration: 0.1, // Random duration for the effect
+                opacity: 0.2,
+                duration: 0.1,
                 ease: "power3.inOut",
               });
             });

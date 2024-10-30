@@ -18,6 +18,7 @@ export class Interactions {
   createSmoothScroll() {
     const lenis = new Lenis({
       lerp: 0.1,
+      smoothTouch: true, // Ensures smoother touch handling on mobile
     });
 
     lenis.on("scroll", ScrollTrigger.update);
