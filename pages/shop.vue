@@ -2,11 +2,13 @@
   <div class="Page">
     <div class="shopPage__banner">
       <nuxt-img
-        loading="lazy"
+        loading="eager"
         :src="filteredBackgrounds"
         alt=""
         width="100%"
         height="100%"
+        quality="80"
+        :placeholder="15"
       />
 
       <div class="shopPage__banner--text-container">

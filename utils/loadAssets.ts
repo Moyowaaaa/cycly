@@ -1,11 +1,11 @@
 import usePreloadImagesStore from "~/stores/ImagesPreloader";
 
-export function loadAssets(): Promise<void[]> {
+export function loadAssets(): Promise<void[] | any> {
   const preloadImagesStore = usePreloadImagesStore();
   const prefixUrl =
     "https://res.cloudinary.com/dyap7epew/image/upload/v1722255252/cycly/";
 
-  const images: any[] = [
+  const images = [
     `${prefixUrl}titleBike.png`,
     `${prefixUrl}cityBike`,
     `${prefixUrl}mountainBike`,
@@ -51,25 +51,59 @@ export function loadAssets(): Promise<void[]> {
 
   preloadImagesStore.numberOfImagesToLoad = images.length;
 
-  const promises: Promise<void>[] = [];
+  const MAX_RETRIES = 3;
+  const RETRY_DELAY = 2000;
 
-  images.forEach((imagePath) => {
-    const promise = new Promise<void>((resolve, reject) => {
+  const promises = images.map((imagePath) =>
+    loadImageWithRetry(imagePath, MAX_RETRIES, RETRY_DELAY, preloadImagesStore)
+  );
+
+  return Promise.all(promises).then(() => {
+    console.log("All images have been processed.");
+    console.log("images from https://unsplash.com");
+  });
+}
+
+function loadImageWithRetry(
+  src: string,
+  retries: number,
+  delay: number,
+  preloadImagesStore: ReturnType<typeof usePreloadImagesStore>
+): Promise<void> {
+  return new Promise((resolve) => {
+    let attempts = 0;
+    let loaded = false;
+
+    const load = () => {
       const image = new Image();
+      image.src = src;
+
       image.onload = () => {
-        preloadImagesStore.numberOfLoadedImages++;
-        if (preloadImagesStore.numberOfLoadedImages === images.length) {
-          console.log("images from: https://unsplash.com");
+        if (!loaded) {
+          // Check if the image has already been loaded
+          preloadImagesStore.numberOfLoadedImages++;
+          loaded = true; // Ensure only a single increment per image
         }
         resolve();
       };
-      image.onerror = () => {
-        reject(`Failed to load image: ${imagePath}`);
-      };
-      image.src = imagePath;
-    });
-    promises.push(promise);
-  });
 
-  return Promise.all(promises);
+      image.onerror = () => {
+        attempts++;
+        if (attempts < retries) {
+          console.warn(`Retrying ${src} (${attempts}/${retries})...`);
+          setTimeout(load, delay);
+        } else {
+          console.error(`Failed to load ${src} after ${retries} attempts.`);
+          if (!loaded) {
+            // Only increment if it hasn't been loaded
+            preloadImagesStore.numberOfLoadedImages++;
+            loaded = true;
+          }
+          resolve();
+        }
+      };
+    };
+
+    load();
+  });
 }

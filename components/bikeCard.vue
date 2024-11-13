@@ -7,6 +7,9 @@
         :alt="`${bicycle.name} Image`"
         width="100%"
         height="100%"
+        quality="80"
+        :placeholder="15"
+        format="webp"
       />
     </div>
     <div class="bikeCard__details-container">

@@ -31,7 +31,7 @@
         <p>Discover the joy of cycling with our premium range of bicycles.</p>
       </div>
     </div>
-    <nuxt-img loading="lazy" src="titleBike.png" alt="" />
+    <img :src="`${prefixUrl}titleBike.png`" alt="" />
   </div>
 </template>
 
@@ -41,6 +41,8 @@ const titleSectionRef = ref<HTMLDivElement | null>(null);
 const buttonContainerRef = ref<HTMLDivElement | null>(null);
 const tl: any = inject("timeline");
 let mm = gsap.matchMedia();
+const prefixUrl =
+  "https://res.cloudinary.com/dyap7epew/image/upload/v1722255252/cycly/";
 
 onMounted(() => {
   if (titleSectionRef.value && buttonContainerRef.value) {

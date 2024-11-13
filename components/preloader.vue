@@ -9,6 +9,24 @@
           {{ currentAction }}
         </h1>
       </div>
+
+      <div
+        class="preloader__container--count"
+        v-if="Number(percentageOfLoadedImages < 100)"
+      >
+        {{ percentageOfLoadedImages.toFixed() }}
+
+        <small>`</small>
+      </div>
+
+      <div
+        class="preloader__container--count"
+        v-if="Number(percentageOfLoadedImages >= 100)"
+      >
+        100
+
+        <small>`</small>
+      </div>
     </div>
   </div>
 </template>
@@ -117,7 +135,8 @@ onMounted(() => {
 });
 
 const preloaderTransitionOut = () => {
-  gsap.to(".preloader__container--counter-container p", {
+  const tl = gsap.timeline();
+  tl.to([".preloader__container--counter-container p"], {
     clipPath: "polygon(0 10%, 10% 10%, 100% 0, 0 0)",
     opacity: 0,
     duration: 1,
@@ -125,7 +144,18 @@ const preloaderTransitionOut = () => {
     ease: "power3.inOut",
   });
 
-  gsap.to(".preloader", {
+  tl.to(
+    ".preloader__container--count",
+    {
+      y: 200,
+      opacity: 0,
+      duration: 0.8,
+      ease: "power3.inOut",
+    },
+    "-=.8"
+  );
+
+  tl.to(".preloader", {
     yPercent: -100,
     duration: 1.1,
     ease: "power4.inOut",
@@ -136,7 +166,7 @@ const preloaderTransitionOut = () => {
 };
 
 watchEffect(() => {
-  if (percentageOfLoadedImages.value === 100) {
+  if (percentageOfLoadedImages.value > 100) {
     preloaderTransitionOut();
   }
 });
@@ -204,6 +234,23 @@ watchEffect(() => {
         @media screen and (max-width: 500px) {
           font-size: 1.5rem;
         }
+      }
+    }
+
+    &--count {
+      position: absolute;
+      bottom: 4rem;
+      right: 10px;
+      font-size: 8rem;
+      font-family: sans-medium;
+
+      @media screen and (max-width: 500px) {
+        display: none;
+      }
+
+      small {
+        font-size: 4rem;
+        font-family: sans-light;
       }
     }
   }

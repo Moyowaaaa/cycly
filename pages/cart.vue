@@ -7,6 +7,7 @@
         alt=""
         width="100%"
         height="100%"
+        quality="80"
       />
       <div class="cartPage__banner--text-container">
         <h1>CART</h1>
