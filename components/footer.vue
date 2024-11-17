@@ -95,8 +95,6 @@ let cleanup: (() => void) | null = null;
 
 onMounted(() => {
   if (process.client) {
-    // Run only in the browser environment
-
     const largeTextContainer = document.querySelector(
       ".footer__container--content-container__heroText"
     );

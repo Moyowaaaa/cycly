@@ -59,7 +59,6 @@ export function loadAssets(): Promise<void[] | any> {
   );
 
   return Promise.all(promises).then(() => {
-    console.log("All images have been processed.");
     console.log("images from https://unsplash.com");
   });
 }

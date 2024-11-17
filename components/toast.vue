@@ -8,15 +8,6 @@
         class="toast-component__color-bar"
         :style="{ border: `2px solid ${statusColor} ` }"
       ></div>
-
-      <!-- <div class="toast-component__container">
-        
-
-        <div
-          class="toast-component__container--color-bar"
-          :style="{ background: `${statusColor} ` }"
-        ></div>
-      </div> -->
     </div>
   </Transition>
 </template>

@@ -62,7 +62,6 @@ onMounted(() => {
     tl.to(
       [
         titleSectionRef.value.children[0].children[0].children[0],
-        // buttonContainerRef.value.children[0],
         titleSectionRef.value.children[0].children[1].children,
       ],
       {
@@ -86,28 +85,6 @@ onMounted(() => {
     });
     mm.add("(min-width: 767px)", () => {
       if (titleSectionRef.value && buttonContainerRef.value) {
-        // gsap.fromTo(
-        //   titleSectionRef.value.children[0].children[0].children[0],
-        //   {
-        //     scale: 1.05,
-        //     opacity: 0,
-        //   },
-        //   {
-        //     opacity: 0,
-        //     y: 0,
-        //     scale: 1,
-        //     delay: 1.2,
-        //     ease: "power3.inOut",
-        //     scrollTrigger: {
-        //       trigger: titleSectionRef.value.children[0].children[0].children,
-        //       scrub: -1,
-
-        //       start: "99% 100%",
-        //       // end: "  top 70%",
-        //     },
-        //   }
-        // );
-
         gsap.to(buttonContainerRef.value.children[0].children, {
           y: -100,
           duration: 1.2,
@@ -143,11 +120,9 @@ onMounted(() => {
             ease: "power3.inOut",
           },
           {
-            // y: -100,
             scale: 1,
 
             duration: 1.2,
-            // delay: 2,
             ease: "power3.inOut",
             scrollTrigger: {
               trigger: titleSectionRef.value.children[1],
@@ -175,10 +150,7 @@ onMounted(() => {
   left: 0;
   right: 0;
   color: white;
-  // background-image: url("https://res.cloudinary.com/dyap7epew/image/upload/v1722255246/cycly/titleBike.png");
-  // background-size: cover;
-  // background-repeat: no-repeat;
-  // background-attachment: fixed;
+
   @media screen and (max-width: 991px) {
     max-width: 100vw;
     overflow-x: hidden;

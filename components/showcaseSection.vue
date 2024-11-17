@@ -36,8 +36,6 @@ onMounted(() => {
         trigger: ".topSection",
         start: "top 85%",
         end: "top 20%",
-        // pin: [".testSection"],
-        // markers: true,
         scrub: 3,
         toggleActions: "none pause none none",
       },
