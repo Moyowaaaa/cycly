@@ -16,7 +16,7 @@ useHead({
     {
       hid: "og:description",
       name: "og:description",
-      content: "Cycly Bike Store",
+      content: "Discover the joy of cycling with our premium range of bicycles",
     },
     {
       hid: "twitter:description",
@@ -33,23 +33,6 @@ useHead({
       hid: "og:site_name",
       name: "og:site_name",
       content: "Cycly",
-    },
-    {
-      hid: "og:image",
-      name: "og:image",
-      content:
-        "https://res.cloudinary.com/dyap7epew/image/upload/f_auto,q_auto/v1/projects/dvtawwshuetenrqgrvz3",
-    },
-    {
-      hid: "twitter:image",
-      name: "twitter:image",
-      content:
-        "https://res.cloudinary.com/dyap7epew/image/upload/f_auto,q_auto/v1/projects/dvtawwshuetenrqgrvz3",
-    },
-    {
-      hid: "twitter:card",
-      name: "twitter:card",
-      content: "summary_large_image",
     },
   ],
   link: [

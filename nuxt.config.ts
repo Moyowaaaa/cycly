@@ -34,6 +34,7 @@ export default defineNuxtConfig({
           content: "https://cycly.vercel.app",
         },
 
+        // Twitter meta tags
         { hid: "twitter:title", name: "twitter:title", content: "Cycly" },
         {
           hid: "twitter:description",
