@@ -26,7 +26,7 @@ export default defineNuxtConfig({
           hid: "og:image",
           property: "og:image",
           content:
-            "Discover the joy of cycling with our premium range of bicycles",
+            "https://res.cloudinary.com/dyap7epew/image/upload/f_auto,q_auto/v1/projects/dvtawwshuetenrqgrvz3",
         },
         {
           hid: "og:url",
