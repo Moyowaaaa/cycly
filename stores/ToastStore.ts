@@ -9,7 +9,7 @@ const useToastStore = defineStore("ToastStore", {
   }),
   actions: {
     addedItem() {
-      (this.message = `Added Item To cart`),
+      (this.message = `Added item to cart`),
         (this.color = "#AAE759"),
         (this.show = true),
         setTimeout(() => {
@@ -42,7 +42,7 @@ const useToastStore = defineStore("ToastStore", {
     },
 
     addedWishList() {
-      (this.message = "Item added to Wishlist"), (this.show = true);
+      (this.message = "Item added to wishlist"), (this.show = true);
       this.color = "#02886B";
 
       setTimeout(() => {
@@ -51,7 +51,7 @@ const useToastStore = defineStore("ToastStore", {
     },
 
     removedWishList() {
-      (this.message = "Item removed from WishList"), (this.show = true);
+      (this.message = "Item removed from wishlist"), (this.show = true);
       this.color = "orange";
       setTimeout(() => {
         (this.message = ""), (this.show = false);

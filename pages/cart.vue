@@ -76,22 +76,24 @@
             <div
               class="cartPage__main-container--content-container__brief-section--details-section__detail"
             >
-              <p>Tax</p>
-              <p>$3.0</p>
+              <p>Tax (7.5%)</p>
+              <p>
+                ${{ (CartStore.totalAmountOfItemInCart * 0.075).toFixed() }}
+              </p>
             </div>
 
             <div
               class="cartPage__main-container--content-container__brief-section--details-section__detail"
             >
               <p>Shipping</p>
-              <p>$3.0</p>
+              <p>${{ (CartStore.totalAmountOfItemInCart * 0.06).toFixed() }}</p>
             </div>
 
             <div
               class="cartPage__main-container--content-container__brief-section--details-section__detail"
             >
               <p>Total</p>
-              <p>$306.05</p>
+              <p>${{ splitAmountByThousands(totalAmount) }}</p>
             </div>
 
             <button
@@ -114,6 +116,7 @@
 <script setup lang="ts">
 import useCartStore from "@/stores/CartStore";
 const CartStore = useCartStore();
+import { splitAmountByThousands } from "../utils/index";
 
 useHead({
   title: "Cart | Cycly",
@@ -165,6 +168,14 @@ useHead({
       href: "https://res.cloudinary.com/dyap7epew/image/upload/f_auto,q_auto/v1/projects/dvtawwshuetenrqgrvz3",
     },
   ],
+});
+
+const totalAmount: any = computed(() => {
+  return (
+    CartStore.totalAmountOfItemInCart * 0.075 +
+    CartStore.totalAmountOfItemInCart +
+    CartStore.totalAmountOfItemInCart * 0.06
+  ).toFixed();
 });
 </script>
 

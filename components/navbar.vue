@@ -167,12 +167,12 @@ onMounted(() => {
       {
         opacity: 1,
         y: 0,
-        stagger: 0.2,
+        stagger: 0.09,
         duration: 1.2,
         delay: 1,
         ease: "power3.inOut",
       },
-      "-=1"
+      "-=1.5"
     );
   }
 });

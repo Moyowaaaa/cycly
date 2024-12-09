@@ -21,6 +21,10 @@
           <div
             class="cartCard__product-section--details-section__price-section--quantity-section"
           >
+            <h1 v-if="cartItem.quantity > 1">
+              ${{ cartItem.price * cartItem.quantity }}
+            </h1>
+
             <div @click="CartStore.increaseItem(cartItem.slug)">+</div>
             <p>{{ cartItem.quantity }}</p>
             <div @click="CartStore.decreaseItem(cartItem.slug)">-</div>
@@ -120,6 +124,7 @@ const props = defineProps(["cartItem"]);
         position: relative;
         width: 100%;
         justify-content: space-between;
+        align-items: center;
 
         h1 {
           font-size: 1.125rem;
