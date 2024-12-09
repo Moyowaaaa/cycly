@@ -1,7 +1,7 @@
 <template>
   <div class="wishlistEmptyState">
     <div class="wishlistEmptyState__main-container">
-      <h1>No bikes in wishlist :(</h1>
+      <h1>No bikes on wishlist :(</h1>
       <nuxt-link to="/shop">
         <button class="button">
           <span style="display: flex; align-items: center; gap: 10px"
