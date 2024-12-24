@@ -9,7 +9,7 @@
       <div class="topSection__image-container" id="image-container">
         <nuxt-img
           loading="lazy"
-          src="marqueeImage.png"
+          src="/images/marqueeImage.png"
           alt=""
           id="image-container-image"
           width="100%"

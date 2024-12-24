@@ -8,10 +8,11 @@
         >
           <nuxt-img
             loading="lazy"
-            src="whiteLogo.png"
+            src="/images/whiteLogo.png"
             alt="logo"
             width="100%"
             height="100%"
+            format="webp"
           />
         </div>
 
@@ -20,7 +21,7 @@
         </div>
 
         <div class="footer__container--content-container__links-container">
-          <nuxt-link to="/shop">
+          <nuxt-link to="/shop" @click="scrollUp()">
             <button
               class="footer__container--content-container__links-container--button"
             >
@@ -53,7 +54,7 @@
         <div class="footer__container--image-container__image-content">
           <nuxt-img
             loading="lazy"
-            src="cityBike.png"
+            src="/images/cityBike.png"
             alt=""
             width="100%"
             height="100%"
@@ -204,6 +205,18 @@ const onGoHome = () => {
     behavior: "smooth",
   });
 };
+
+const scrollUp = () => {
+  const element = document.getElementById("top");
+  if (element) {
+    const elementPosition =
+      element.getBoundingClientRect().top + window.scrollY;
+    window.scrollTo({
+      top: elementPosition - 30,
+      behavior: "smooth",
+    });
+  }
+};
 </script>
 
 <style scoped lang="scss">
@@ -341,13 +354,6 @@ const onGoHome = () => {
           object-fit: contain;
         }
       }
-      //   margin-top: 4rem;
-
-      //   img {
-      //     height: 100%;
-      //     width: 100%;
-      //     object-fit: contain;
-      //   }
     }
 
     &--bottom-section {

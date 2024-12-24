@@ -3,7 +3,7 @@
     <div class="cartPage__banner">
       <nuxt-img
         loading="lazy"
-        src="cartImage.png"
+        src="/images/cartImage.png"
         alt=""
         width="100%"
         height="100%"

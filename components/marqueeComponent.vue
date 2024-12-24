@@ -68,17 +68,16 @@ import Observer from "gsap/Observer";
 gsap.registerPlugin(Observer);
 
 const showcaseImages = [
-  "showcaseImage1",
-  "showcaseImage2",
-  "showcaseImage3",
-  "showcaseImage4",
-  "showcaseImage5",
-  "showcaseImage6",
-  "showcaseImage7",
-
-  "showcaseImage9",
-  "showcaseImage10",
-  "showcaseImageX",
+  `/images/showcaseImage1.png`,
+  `/images/showcaseImage2.png`,
+  `/images/showcaseImage3.png`,
+  `/images/showcaseImage4.png`,
+  `/images/showcaseImage5.png`,
+  `/images/showcaseImage6.jpg`,
+  `/images/showcaseImage7.jpg`,
+  `/images/showcaseImage9.jpg`,
+  `/images/showcaseImage10.jpg`,
+  `/images/showcaseImageX.jpg`,
 ];
 
 // Function for creating a horizontal loop animation

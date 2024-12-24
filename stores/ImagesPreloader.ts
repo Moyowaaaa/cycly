@@ -4,6 +4,7 @@ const usePreloadImagesStore = defineStore("preload-images", () => {
   const numberOfImagesToLoad = ref<number>(0);
   const numberOfLoadedImages = ref<number>(0);
   const imagesHaveLoaded = ref<boolean>(false);
+  const preloaderDone = ref<boolean>(false);
 
   const percentageOfLoadedImages = computed(() => {
     return (numberOfLoadedImages.value / numberOfImagesToLoad.value) * 100;
@@ -14,6 +15,7 @@ const usePreloadImagesStore = defineStore("preload-images", () => {
     numberOfLoadedImages,
     imagesHaveLoaded,
     percentageOfLoadedImages,
+    preloaderDone,
   };
 });
 

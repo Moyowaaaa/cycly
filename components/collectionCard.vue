@@ -8,12 +8,10 @@
     <div class="collectionCard__container">
       <h2>{{ title }}</h2>
     </div>
-    <nuxt-img
-      loading="lazy"
-      :src="image"
+    <CustomImageViewer
+      :image="image"
+      sizeType="cover"
       :alt="`${title} Image`"
-      width="100%"
-      height="100%"
     />
   </div>
 </template>

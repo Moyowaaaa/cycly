@@ -1,15 +1,9 @@
 <template>
   <div class="bikeCard" ref="cardRef">
     <div class="bikeCard__image-container">
-      <nuxt-img
-        loading="lazy"
-        :src="bicycle.imageName"
+      <CustomImageViewer
+        :image="bicycle.imageName"
         :alt="`${bicycle.name} Image`"
-        width="100%"
-        height="100%"
-        quality="80"
-        :placeholder="15"
-        format="webp"
       />
     </div>
     <div class="bikeCard__details-container">

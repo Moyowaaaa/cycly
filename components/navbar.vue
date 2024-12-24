@@ -4,10 +4,11 @@
       <div class="navbar__container--logo-container" @click="onGoHome">
         <nuxt-img
           loading="lazy"
-          src="logo.png"
+          src="/images/logo.png"
           alt="logo"
           width="100%"
           height="100%"
+          format="webp"
         />
       </div>
 

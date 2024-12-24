@@ -1,13 +1,7 @@
 <template>
   <div class="cartCard">
     <div class="cartCard__product-section">
-      <nuxt-img
-        :src="cartItem.imageName"
-        alt=""
-        loading="lazy"
-        width="100%"
-        height="100%"
-      />
+      <CustomImageViewer :image="cartItem.imageName" />
       <div class="cartCard__product-section--details-section">
         <div class="cartCard__product-section--details-section__name-section">
           <h1>{{ cartItem.name }}</h1>
@@ -38,7 +32,7 @@
     >
       <nuxt-img
         loading="lazy"
-        src="trashIcon.svg"
+        src="/images/trashIcon.svg"
         alt=""
         width="100%"
         height="100%"

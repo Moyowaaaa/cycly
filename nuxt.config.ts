@@ -25,8 +25,7 @@ export default defineNuxtConfig({
         {
           hid: "og:image",
           property: "og:image",
-          content:
-            "https://res.cloudinary.com/dyap7epew/image/upload/f_auto,q_auto/v1/projects/dvtawwshuetenrqgrvz3",
+          content: "/images/og-image.png", // Local image path
         },
         {
           hid: "og:url",
@@ -45,8 +44,7 @@ export default defineNuxtConfig({
         {
           hid: "twitter:image",
           name: "twitter:image",
-          content:
-            "https://res.cloudinary.com/dyap7epew/image/upload/f_auto,q_auto/v1/projects/dvtawwshuetenrqgrvz3",
+          content: "/images/twitter-image.png", // Local image path
         },
         {
           hid: "twitter:card",
@@ -63,7 +61,7 @@ export default defineNuxtConfig({
         {
           rel: "icon",
           type: "image/png",
-          href: "https://res.cloudinary.com/dyap7epew/image/upload/f_auto,q_auto/v1/projects/dvtawwshuetenrqgrvz3",
+          href: "/images/favicon.png", // Local image path
         },
       ],
     },
@@ -83,12 +81,5 @@ export default defineNuxtConfig({
     },
   },
 
-  image: {
-    provider: "cloudinary",
-    cloudinary: {
-      baseURL:
-        "https://res.cloudinary.com/dyap7epew/image/upload/v1722255252/cycly/",
-    },
-  },
   ssr: true,
 });

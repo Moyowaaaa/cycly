@@ -4,7 +4,7 @@
       <div class="quoteSection__container--quotes-container" ref="sectionRef">
         <nuxt-img
           loading="lazy"
-          src="quote.svg"
+          src="/images/quote.svg"
           alt=""
           width="100%"
           height="100%"
@@ -29,7 +29,7 @@
     <div class="quoteSection__image-container">
       <nuxt-img
         loading="lazy"
-        src="quoteBike.png"
+        src="/images/quoteBike.png"
         alt=""
         width="100%"
         height="100%"

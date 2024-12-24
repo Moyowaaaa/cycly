@@ -79,7 +79,7 @@ onMounted(() => {
   min-height: 70vh;
   max-height: 70vh;
   height: 70vh;
-  background-image: url("https://res.cloudinary.com/dyap7epew/image/upload/v1722255246/cycly/joinUsBackground.png");
+  background-image: url("/images/joinUsBackground.png");
   background-size: cover;
   background-repeat: no-repeat;
   background-attachment: fixed;
