@@ -35,18 +35,18 @@ watch(imagesHaveLoaded, (newValue) => {
   }
 });
 
-// onMounted(() => {
-//   // Register the service worker
-//   if ("serviceWorker" in navigator) {
-//     navigator.serviceWorker.register("/sw.js").catch((error) => {
-//       return error;
-//     });
-//   }
+onMounted(() => {
+  // Register the service worker
+  if ("serviceWorker" in navigator) {
+    navigator.serviceWorker.register("/sw.js").catch((error) => {
+      return error;
+    });
+  }
 
-//   if (!imagesHaveLoaded.value) {
-//     loadAssets();
-//   }
-// });
+  if (!imagesHaveLoaded.value) {
+    loadAssets();
+  }
+});
 </script>
 
 <style scoped lang="scss">
