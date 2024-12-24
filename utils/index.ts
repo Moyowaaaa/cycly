@@ -5,7 +5,6 @@ export const removeLastLetter = (str: string) => {
 export const sentenceCase = (str: string) => {
   if (!str) return "";
 
-  // return str;/
   return str?.charAt(0).toUpperCase() + str?.slice(1)?.toLowerCase();
 };
 
