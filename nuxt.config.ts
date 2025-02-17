@@ -1,6 +1,7 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   devtools: { enabled: true },
+
   app: {
     head: {
       htmlAttrs: { lang: "en" },
@@ -66,6 +67,7 @@ export default defineNuxtConfig({
       ],
     },
   },
+
   modules: ["@pinia/nuxt", "@nuxt/image"],
   css: ["@/styles/index.scss"],
 
@@ -82,4 +84,5 @@ export default defineNuxtConfig({
   },
 
   ssr: true,
+  compatibilityDate: "2025-02-17",
 });

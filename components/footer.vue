@@ -85,7 +85,7 @@
 import { useRouter } from "vue-router";
 import { intersectionObserver } from "../animations/useIntersectionObserver";
 import gsap from "gsap";
-import Splitting from "splitting";
+import SplitType from "split-type";
 
 let year = ref<number>();
 const router = useRouter();
@@ -108,7 +108,13 @@ onMounted(() => {
       ".footer__container--bottom-section"
     ) as Element;
 
-    const result = Splitting({ target: largeText, by: "chars" });
+    const result = new SplitType(
+      ".footer__container--content-container__heroText--text",
+      {
+        types: "words,chars",
+        tagName: "span",
+      }
+    );
 
     const date = new Date();
     year.value = date.getFullYear();
@@ -169,22 +175,24 @@ onMounted(() => {
         { threshold: 0.2 },
         (isIntersecting) => {
           if (isIntersecting) {
-            result[0].chars.forEach((a: gsap.TweenTarget, i: number) => {
-              gsap.to(a, {
-                opacity: 1, // Animate to full opacity
-                duration: 0.2,
-                ease: "power3.inOut",
-                delay: i * gsap.utils.random(0.1, 0.2),
+            result.chars &&
+              result.chars.forEach((a: gsap.TweenTarget, i: number) => {
+                gsap.to(a, {
+                  opacity: 1, // Animate to full opacity
+                  duration: 0.2,
+                  ease: "power3.inOut",
+                  delay: i * gsap.utils.random(0.1, 0.2),
+                });
               });
-            });
           } else {
-            result[0].chars.forEach((a: gsap.TweenTarget) => {
-              gsap.to(a, {
-                opacity: 0.2,
-                duration: 0.1,
-                ease: "power3.inOut",
+            result.chars &&
+              result.chars.forEach((a: gsap.TweenTarget) => {
+                gsap.to(a, {
+                  opacity: 0.2,
+                  duration: 0.1,
+                  ease: "power3.inOut",
+                });
               });
-            });
           }
         }
       );
