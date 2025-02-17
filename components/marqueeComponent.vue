@@ -347,7 +347,6 @@ onMounted(() => {
   display: block;
   position: relative;
 }
-
 .secondSection__button-container__button > span {
   overflow: hidden;
 }
