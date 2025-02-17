@@ -1,13 +1,13 @@
 {
   "name": "nuxt-app",
   "private": true,
-  "scripts": {
-    "build": "nuxt build",
-    "dev": "nuxt dev",
-    "generate": "nuxt generate",
-    "preview": "nuxt preview",
-    "postinstall": "nuxt prepare"
-  },
+"scripts": {
+  "build": "NODE_OPTIONS=--experimental-loader=ts-node/esm nuxt build",
+  "dev": "nuxt dev",
+  "generate": "nuxt generate",
+  "preview": "nuxt preview",
+  "postinstall": "nuxt prepare"
+},
   "devDependencies": {
     "@nuxt/devtools": "latest",
     "@nuxt/image": "^1.7.0",
