@@ -19,7 +19,9 @@
             height="100%"
           />
         </div>
+      </div>
 
+      <div class="rail" style="margin-left: 0.5rem">
         <div
           class="secondSection__container--card"
           v-for="(showcaseImage, index) in showcaseImages"
@@ -61,7 +63,6 @@
 </template>
 
 <script setup lang="ts">
-import { onMounted, nextTick } from "vue";
 import gsap from "gsap";
 import Observer from "gsap/Observer";
 
@@ -80,7 +81,6 @@ const showcaseImages = [
   `/images/showcaseImageX.jpg`,
 ];
 
-// Function for creating a horizontal loop animation
 function horizontalLoop(
   items: HTMLElement[],
   config: {
@@ -192,7 +192,7 @@ function horizontalLoop(
   tl.toIndex = (index: number, vars?: gsap.TweenVars) => toIndex(index, vars);
   tl.times = times;
 
-  tl.progress(1, true).progress(0, true); // Pre-render for performance
+  tl.progress(1, true).progress(0, true);
 
   if (config.reversed) {
     tl.vars.onReverseComplete!();

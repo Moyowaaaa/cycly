@@ -8,8 +8,8 @@
     <div class="collectionCard__container">
       <h2>{{ title }}</h2>
     </div>
-    <CustomImageViewer
-      :image="image"
+    <nuxt-img
+      :src="computedImageSrc"
       sizeType="cover"
       :alt="`${title} Image`"
     />
@@ -23,6 +23,8 @@ const router = useRouter();
 
 gsap.registerPlugin(ScrollTrigger);
 
+const imageExtensions = ["png", "jpg", "webp"];
+const computedImageSrc = ref("");
 const cardRef = ref<HTMLDivElement | null>(null);
 interface CollectionCardProps {
   title: string;
@@ -30,7 +32,28 @@ interface CollectionCardProps {
   backgroundColor: string;
 }
 
-defineProps<CollectionCardProps>();
+const props = defineProps<CollectionCardProps>();
+watchEffect(async () => {
+  if (!props.image) return;
+
+  for (const ext of imageExtensions) {
+    const imgSrc = `/images/${props.image}.${ext}`;
+    const exists = await imageExists(imgSrc);
+    if (exists) {
+      computedImageSrc.value = imgSrc;
+      break;
+    }
+  }
+});
+
+function imageExists(src: string): Promise<boolean> {
+  return new Promise((resolve) => {
+    const img = new Image();
+    img.onload = () => resolve(true);
+    img.onerror = () => resolve(false);
+    img.src = src;
+  });
+}
 
 const redirectWithQuery = (title: string) => {
   router.push({

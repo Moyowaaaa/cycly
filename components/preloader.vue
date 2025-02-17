@@ -1,5 +1,5 @@
 <template>
-  <div class="preloader" v-if="!imagesHaveLoaded">
+  <div class="preloader">
     <div class="preloader__container">
       <div class="preloader__container--counter-container">
         <p>Loading Assets</p>
@@ -32,7 +32,6 @@
 </template>
 
 <script setup lang="ts">
-import { ref, watchEffect, onMounted } from "vue";
 import usePreloadImagesStore from "~/stores/ImagesPreloader";
 import gsap from "gsap";
 
@@ -166,7 +165,7 @@ const preloaderTransitionOut = () => {
 };
 
 watchEffect(() => {
-  if (percentageOfLoadedImages.value > 100) {
+  if (percentageOfLoadedImages.value === 100) {
     preloaderTransitionOut();
   }
 });

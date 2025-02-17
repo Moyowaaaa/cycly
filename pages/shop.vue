@@ -47,7 +47,6 @@
 </template>
 
 <script setup lang="ts">
-import { ref, computed } from "vue";
 import { storeToRefs } from "pinia";
 import useBikeStore from "../stores/BikesStore";
 import type { bike, bikeTypes } from "../types/declarations";
@@ -57,6 +56,7 @@ const router = useRouter();
 const type = route.query.type;
 const BikesStore = useBikeStore();
 const { bikes } = storeToRefs(BikesStore);
+
 const types: bikeTypes[] = [
   "City Bikes",
   "Mountain Bikes",

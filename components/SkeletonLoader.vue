@@ -7,7 +7,7 @@
 
 <style lang="scss" scoped>
 .skeleton-loader {
-  background-color: #f6f6f6;
+  background-color: #f9f6ff;
   width: 100%;
   height: 100%;
   display: flex;

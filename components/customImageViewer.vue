@@ -1,19 +1,24 @@
 <template>
-  <nuxt-img
-    loading="eager"
-    :src="computedImageSrc"
-    :alt="props.alt || 'image'"
-    width="100%"
-    height="100%"
-    quality="80"
-    format="webp"
-    :style="{ objectFit: sizeType }"
-  />
+  <div>
+    <skeleton-loader v-if="loading" />
+
+    <nuxt-img
+      v-show="!loading"
+      loading="eager"
+      :src="computedImageSrc"
+      :alt="props.alt || 'image'"
+      width="100%"
+      height="100%"
+      quality="80"
+      format="webp"
+      :style="{ objectFit: sizeType }"
+      @load="loading = false"
+      @error="loading = false"
+    />
+  </div>
 </template>
 
 <script setup lang="ts">
-import { ref, computed, onMounted } from "vue";
-
 interface Props {
   image: string | undefined;
   sizeType?: "cover" | "contain";
@@ -23,8 +28,10 @@ interface Props {
 const props = defineProps<Props>();
 const imageExtensions = ["png", "jpg", "webp"];
 const computedImageSrc = ref("");
+const loading = ref(true);
 
 watchEffect(async () => {
+  loading.value = true;
   if (!props.image) return;
 
   for (const ext of imageExtensions) {
@@ -43,7 +50,6 @@ function imageExists(src: string): Promise<boolean> {
     img.onload = () => resolve(true);
     img.onerror = () => resolve(false);
     img.src = src;
-    console.log(src);
   });
 }
 </script>
@@ -60,6 +66,7 @@ div {
     height: 100%;
     object-fit: cover;
     border-radius: 5px;
+    z-index: 10000 !important;
   }
 }
 </style>

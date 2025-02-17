@@ -19,7 +19,6 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from "vue";
 import type { collectionType } from "../types/declarations";
 
 const collections = ref<collectionType[]>([

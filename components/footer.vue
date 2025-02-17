@@ -82,7 +82,6 @@
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted, onUnmounted } from "vue";
 import { useRouter } from "vue-router";
 import { intersectionObserver } from "../animations/useIntersectionObserver";
 import gsap from "gsap";

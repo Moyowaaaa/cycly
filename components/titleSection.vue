@@ -41,46 +41,13 @@ const titleSectionRef = ref<HTMLDivElement | null>(null);
 const buttonContainerRef = ref<HTMLDivElement | null>(null);
 const tl: any = inject("timeline");
 let mm = gsap.matchMedia();
+import usePreloadImagesStore from "~/stores/ImagesPreloader";
+const imagesStore = usePreloadImagesStore();
+const { imagesHaveLoaded } = storeToRefs(imagesStore);
 
 onMounted(() => {
   if (titleSectionRef.value && buttonContainerRef.value) {
-    gsap.set(titleSectionRef.value.children[1], { scale: 1 });
-    gsap.set(titleSectionRef.value.children[0].children[0].children[0], {
-      opacity: 0,
-    });
-
-    tl.to(titleSectionRef.value.children[0].children[0].children[0], {
-      opacity: 1,
-    });
-
-    tl.to(buttonContainerRef.value.children[0].children, {
-      opacity: 1,
-    });
-
-    tl.to(
-      [
-        titleSectionRef.value.children[0].children[0].children[0],
-        titleSectionRef.value.children[0].children[1].children,
-      ],
-      {
-        opacity: 1,
-        y: 0,
-        scale: 1,
-        // stagger: 0.2,
-        duration: 0.5,
-        delay: 1,
-        ease: "power3.inOut",
-      },
-      "-=1"
-    );
-
-    gsap.to(buttonContainerRef.value.children, {
-      opacity: 1,
-      y: 0,
-      scale: 1,
-      delay: 1.2,
-      ease: "power3.inOut",
-    });
+    console.log(titleSectionRef.value.children[0].children[0].children[0]);
     mm.add("(min-width: 767px)", () => {
       if (titleSectionRef.value && buttonContainerRef.value) {
         gsap.to(buttonContainerRef.value.children[0].children, {
@@ -92,9 +59,7 @@ onMounted(() => {
           scrollTrigger: {
             trigger: buttonContainerRef.value.children[0],
             scrub: -1,
-
             start: "95% 100%",
-            // end: "  top 70%",
           },
         });
 
@@ -108,7 +73,6 @@ onMounted(() => {
             trigger: titleSectionRef.value.children[0].children[1].children,
             scrub: 1.5,
             start: "80% 100%",
-            // end: "  top 70%",
           },
         });
         gsap.fromTo(
@@ -126,12 +90,50 @@ onMounted(() => {
               trigger: titleSectionRef.value.children[1],
               scrub: 2,
               start: "80% 100%",
-              // end: "  top 70%",
             },
           }
         );
       }
     });
+  }
+});
+
+const transitionTitleIn = () => {
+  if (titleSectionRef.value && buttonContainerRef.value) {
+    gsap.set(titleSectionRef.value.children[1], { scale: 1 });
+
+    if (imagesHaveLoaded.value) {
+      tl.to(
+        [
+          titleSectionRef.value.children[0].children[0].children[0],
+          titleSectionRef.value.children[0].children[1].children,
+        ],
+        {
+          opacity: 1,
+          y: 0,
+          scale: 1,
+          stagger: 0.2,
+          duration: 1,
+          delay: 2.5,
+          ease: "power3.inOut",
+        },
+        "-=1"
+      );
+
+      tl.to(buttonContainerRef.value.children[0].children, {
+        opacity: 1,
+        y: 0,
+        scale: 1,
+        delay: 1.2,
+        ease: "power3.inOut",
+      });
+    }
+  }
+};
+
+watchEffect(() => {
+  if (imagesHaveLoaded.value === true) {
+    transitionTitleIn();
   }
 });
 </script>
@@ -200,8 +202,9 @@ onMounted(() => {
         max-width: 35rem;
         line-height: 5rem;
         color: #d9d9d9;
-        opacity: 0;
         // scale: 1;
+        opacity: 0;
+
         z-index: 200;
       }
 
