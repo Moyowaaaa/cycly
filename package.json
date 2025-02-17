@@ -23,5 +23,9 @@
     "pinia": "^2.1.7",
     "split-type": "^0.3.4",
     "splitting": "^1.0.6"
+  },
+  "resolutions": {
+    "string-width": "5.1.2",
+    "wide-align": "1.1.5"
   }
 }
